@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1502465901 source:/home/zenibryum/workspace/Artifix/src/Main.cpp
+1502465995 source:/home/zenibryum/workspace/Artifix/src/Main.cpp
 	<SFML/Graphics.hpp>
 	"Display.h"
 	"GameRegistry.h"
@@ -66,13 +66,13 @@
 1502460725 /home/zenibryum/workspace/Artifix/include/Champion.h
 	"Entity.h"
 
-1502465801 source:/home/zenibryum/workspace/Artifix/src/Entities/Emeraldo.cpp
+1502468196 source:/home/zenibryum/workspace/Artifix/src/Entities/Emeraldo.cpp
 	"Emeraldo.h"
 	"GameRegistry.h"
 	"Display.h"
 	<iostream>
 
-1502465487 /home/zenibryum/workspace/Artifix/include/Entities/Emeraldo.h
+1502467665 /home/zenibryum/workspace/Artifix/include/Entities/Emeraldo.h
 	"Champion.h"
 	<SFML/Graphics/Sprite.hpp>
 

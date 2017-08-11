@@ -21,7 +21,8 @@ class Emeraldo : public Champion{
     protected:
     private:
         sf::Sprite sprite;
-        int vx, vy;
+        float vx, vy;
+        bool w,a,s,d;
 };
 
 #endif // EMERALDO_H
