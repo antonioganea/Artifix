@@ -1,8 +1,10 @@
 # depslib dependency file v1.0
-1502458611 source:/home/zenibryum/workspace/Artifix/src/Main.cpp
+1502461769 source:/home/zenibryum/workspace/Artifix/src/Main.cpp
 	<SFML/Graphics.hpp>
 	"Display.h"
 	"GameRegistry.h"
+	"StageManager.h"
+	"Emeraldo.h"
 
 1502457875 source:/home/zenibryum/workspace/Artifix/src/Registry/GameRegistry.cpp
 	"GameRegistry.h"
@@ -54,4 +56,24 @@
 
 1502454359 /home/zenibryum/workspace/Artifix/include/Stage/StageManager.h
 	"Stage.h"
+
+1502458558 /home/zenibryum/workspace/Artifix/include/Config.h
+
+1502459667 source:/home/zenibryum/workspace/Artifix/src/Champion.cpp
+	"Champion.h"
+
+1502460725 /home/zenibryum/workspace/Artifix/include/Champion.h
+	"Entity.h"
+
+1502461907 source:/home/zenibryum/workspace/Artifix/src/Entities/Emeraldo.cpp
+	"Emeraldo.h"
+	"GameRegistry.h"
+	"Display.h"
+
+1502461966 /home/zenibryum/workspace/Artifix/include/Entities/Emeraldo.h
+	"Champion.h"
+	<SFML/Graphics/Sprite.hpp>
+
+1502461957 /home/zenibryum/workspace/Artifix/include/Entities/Champion.h
+	"Entity.h"
 

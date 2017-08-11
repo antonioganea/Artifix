@@ -2,6 +2,9 @@
 
 #include "Display.h"
 #include "GameRegistry.h"
+#include "StageManager.h"
+
+#include "Emeraldo.h"
 
 int main()
 {
@@ -16,6 +19,14 @@ int main()
 
     Display::init();
 
+    StageManager::init();
+
+    Stage * stage = StageManager::getStage();
+
+    Emeraldo * emeraldo = new Emeraldo();
+
+    stage->addEntity(emeraldo);
+
     while (Display::window->isOpen())
     {
         sf::Event event;
@@ -26,7 +37,9 @@ int main()
         }
 
         Display::window->clear();
-        Display::window->draw(spr);
+        StageManager::input();
+        StageManager::update(1);
+        StageManager::draw();
         Display::window->display();
     }
 

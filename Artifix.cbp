@@ -41,8 +41,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="include/Entities/Champion.h" />
 		<Unit filename="include/Config.h" />
 		<Unit filename="include/Display/Display.h" />
+		<Unit filename="include/Entities/Emeraldo.h" />
 		<Unit filename="include/Entities/Entity.h" />
 		<Unit filename="include/Registry/GameRegistry.h" />
 		<Unit filename="include/Stage/GameState.h" />
@@ -50,6 +52,7 @@
 		<Unit filename="include/Stage/StageManager.h" />
 		<Unit filename="include/Utility/Geometry.h" />
 		<Unit filename="src/Display/Display.cpp" />
+		<Unit filename="src/Entities/Emeraldo.cpp" />
 		<Unit filename="src/Main.cpp" />
 		<Unit filename="src/Registry/GameRegistry.cpp" />
 		<Unit filename="src/Stage/GameState.cpp" />
