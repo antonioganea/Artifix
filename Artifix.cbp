@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include/Registry" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +23,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include/Registry" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -31,7 +33,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="Main.cpp" />
+		<Unit filename="include/Config.h" />
+		<Unit filename="include/Registry/GameRegistry.h" />
+		<Unit filename="src/Main.cpp" />
+		<Unit filename="src/Registry/GameRegistry.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

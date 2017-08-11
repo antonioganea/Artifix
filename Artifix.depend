@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1502457792 source:/home/zenibryum/workspace/Artifix/src/Main.cpp
+	<SFML/Graphics.hpp>
+	"Config.h"
+
+1502457875 source:/home/zenibryum/workspace/Artifix/src/Registry/GameRegistry.cpp
+	"GameRegistry.h"
+	<string>
+	<iostream>
+
+1502457908 /home/zenibryum/workspace/Artifix/include/Registry/GameRegistry.h
+	<map>
+	<stack>
+	<memory>
+	<SFML/Graphics/Texture.hpp>
+	<SFML/Graphics/Text.hpp>
+	<SFML/Audio/SoundBuffer.hpp>
+
