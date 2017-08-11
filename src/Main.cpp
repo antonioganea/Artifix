@@ -34,11 +34,12 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 Display::window->close();
+            if (event.type == sf::Event::KeyPressed or event.type == sf::Event::KeyReleased )
+                StageManager::input( event );
         }
 
         Display::window->clear();
-        StageManager::input();
-        StageManager::update(1);
+        StageManager::update(10.f);
         StageManager::draw();
         Display::window->display();
     }

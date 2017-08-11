@@ -2,6 +2,7 @@
 #define CHAMPION_H
 
 #include "Entity.h"
+#include <SFML/Window/Event.hpp>
 
 class Champion : public Entity
 {
@@ -12,7 +13,7 @@ class Champion : public Entity
         virtual void draw() = 0;
         virtual void update( float dt ) = 0;
 
-        virtual void input() = 0;
+        virtual void input( const sf::Event & event ) = 0;
         virtual void setID( int id ) = 0;
 
         virtual void move() = 0;

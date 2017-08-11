@@ -9,7 +9,7 @@ class Stage
         //Stage();
         virtual void addEntity ( Entity * entity ) = 0;
         virtual void update( float dt ) = 0;
-        virtual void input() = 0;
+        virtual void input( const sf::Event & event ) = 0;
         virtual void draw() = 0;
     protected:
 

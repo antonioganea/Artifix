@@ -57,9 +57,12 @@ void GameState::update(float dt)
   *
   * @todo: document this function
   */
-void GameState::input()
+void GameState::input( const sf::Event & event )
 {
-
+    for ( std::vector<Entity*>::iterator it = m_entities.begin(); it != m_entities.end(); ++it )
+    {
+        (*it)->input(event);
+    }
 }
 
 /** @brief draw

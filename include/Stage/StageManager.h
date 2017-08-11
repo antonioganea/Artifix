@@ -10,7 +10,7 @@ class StageManager
         static void setStage( Stage& stage );
         static Stage* getStage();
         static void update( float dt );
-        static void input();
+        static void input( const sf::Event & event );
         static void draw();
     protected:
 

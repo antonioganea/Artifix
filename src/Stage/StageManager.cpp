@@ -56,9 +56,9 @@ void StageManager::update(float dt)
   *
   * @todo: document this function
   */
-void StageManager::input()
+void StageManager::input( const sf::Event & event )
 {
-    currentStage->input();
+    currentStage->input( event );
 }
 
 /** @brief draw

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1502461769 source:/home/zenibryum/workspace/Artifix/src/Main.cpp
+1502465901 source:/home/zenibryum/workspace/Artifix/src/Main.cpp
 	<SFML/Graphics.hpp>
 	"Display.h"
 	"GameRegistry.h"
@@ -33,28 +33,29 @@
 1502458501 /home/zenibryum/workspace/Artifix/include/Display/Display.h
 	<SFML/Graphics/RenderWindow.hpp>
 
-1502459081 source:/home/zenibryum/workspace/Artifix/src/Stage/GameState.cpp
+1502465772 source:/home/zenibryum/workspace/Artifix/src/Stage/GameState.cpp
 	"GameState.h"
 	<iostream>
 
-1502459069 /home/zenibryum/workspace/Artifix/include/Stage/GameState.h
+1502465556 /home/zenibryum/workspace/Artifix/include/Stage/GameState.h
 	<vector>
 	"Stage.h"
 
-1502458881 /home/zenibryum/workspace/Artifix/include/Stage/Stage.h
+1502465538 /home/zenibryum/workspace/Artifix/include/Stage/Stage.h
 	"Entity.h"
 
-1502454359 /home/zenibryum/workspace/Artifix/include/Entities/Entity.h
+1502465508 /home/zenibryum/workspace/Artifix/include/Entities/Entity.h
+	<SFML/Window/Event.hpp>
 
 1502454363 source:/home/zenibryum/workspace/Artifix/src/Stage/Stage.cpp
 	"Stage.h"
 
-1502454363 source:/home/zenibryum/workspace/Artifix/src/Stage/StageManager.cpp
+1502465529 source:/home/zenibryum/workspace/Artifix/src/Stage/StageManager.cpp
 	"StageManager.h"
 	"GameState.h"
 	<iostream>
 
-1502454359 /home/zenibryum/workspace/Artifix/include/Stage/StageManager.h
+1502465374 /home/zenibryum/workspace/Artifix/include/Stage/StageManager.h
 	"Stage.h"
 
 1502458558 /home/zenibryum/workspace/Artifix/include/Config.h
@@ -65,15 +66,17 @@
 1502460725 /home/zenibryum/workspace/Artifix/include/Champion.h
 	"Entity.h"
 
-1502461907 source:/home/zenibryum/workspace/Artifix/src/Entities/Emeraldo.cpp
+1502465801 source:/home/zenibryum/workspace/Artifix/src/Entities/Emeraldo.cpp
 	"Emeraldo.h"
 	"GameRegistry.h"
 	"Display.h"
+	<iostream>
 
-1502461966 /home/zenibryum/workspace/Artifix/include/Entities/Emeraldo.h
+1502465487 /home/zenibryum/workspace/Artifix/include/Entities/Emeraldo.h
 	"Champion.h"
 	<SFML/Graphics/Sprite.hpp>
 
-1502461957 /home/zenibryum/workspace/Artifix/include/Entities/Champion.h
+1502465490 /home/zenibryum/workspace/Artifix/include/Entities/Champion.h
 	"Entity.h"
+	<SFML/Window/Event.hpp>
 

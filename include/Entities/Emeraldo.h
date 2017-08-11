@@ -11,7 +11,7 @@ class Emeraldo : public Champion{
         void draw();
         void update( float dt );
 
-        void input();
+        void input( const sf::Event & event );
         void setID( int id );
 
         void move();
@@ -21,6 +21,7 @@ class Emeraldo : public Champion{
     protected:
     private:
         sf::Sprite sprite;
+        int vx, vy;
 };
 
 #endif // EMERALDO_H

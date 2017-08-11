@@ -13,7 +13,7 @@ class GameState : public Stage
 
         void addEntity(Entity * entity);
         void update( float dt );
-        void input();
+        void input( const sf::Event & event );
         void draw();
 
     protected:
