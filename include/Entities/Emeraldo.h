@@ -21,7 +21,7 @@ class Emeraldo : public Champion{
     protected:
     private:
         sf::Sprite sprite;
-        float vx, vy;
+        sf::Vector2f velocity;
         bool w,a,s,d;
 };
 

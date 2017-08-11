@@ -3,12 +3,14 @@
 #include "GameRegistry.h"
 #include "Display.h"
 
+#include "Mechanics.h"
+
 #include <iostream>
 
 Emeraldo::Emeraldo(){
     sf::Texture * texture = GameRegistry::getResource("emeraldo.png",ResourceType::Texture).texture;
     sprite.setTexture( *texture, true );
-    vx = vy = 0; // velocities set to 0
+    velocity.x = velocity.y = 0;
     w = a = s = d = false;
 }
 
@@ -29,47 +31,11 @@ const float friction = 0.1f;
 
 void Emeraldo::update(float dt)
 {
-    vx += ((float)(d-a))*acceleration;
-    vy += ((float)(s-w))*acceleration;
+    Mechanics::applyAcceleration(velocity,d-a,s-w,acceleration);
+    Mechanics::applyMaxSpeed(velocity,5.0f);
+    Mechanics::applyFriction(velocity,friction);
 
-
-    //Speed limits
-    if ( vx > 10 )
-        vx = 10;
-    else if ( vx < -10 )
-        vx = -10;
-
-    if ( vy > 10 )
-        vy = 10;
-    else if ( vy < -10 )
-        vy = -10;
-
-    //Friction
-    if ( vx > 0 ){
-        vx -= friction;
-        if ( vx < 0 )
-            vx = 0;
-    }
-
-    if ( vx < 0 ){
-        vx += friction;
-        if ( vx > 0 )
-            vx = 0;
-    }
-
-    if ( vy > 0 ){
-        vy -= friction;
-        if ( vy < 0 )
-            vy = 0;
-    }
-
-    if ( vy < 0 ){
-        vy += friction;
-        if ( vy > 0 )
-            vy = 0;
-    }
-
-    sprite.move(vx,vy);
+    sprite.move(velocity.x,velocity.y);
 }
 
 

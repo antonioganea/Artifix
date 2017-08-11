@@ -18,6 +18,7 @@
 					<Add directory="include/Display" />
 					<Add directory="include/Stage" />
 					<Add directory="include/Entities" />
+					<Add directory="include/" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -32,6 +33,7 @@
 					<Add directory="include/Display" />
 					<Add directory="include/Stage" />
 					<Add directory="include/Entities" />
+					<Add directory="include/" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -41,9 +43,9 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="include/Entities/Champion.h" />
 		<Unit filename="include/Config.h" />
 		<Unit filename="include/Display/Display.h" />
+		<Unit filename="include/Entities/Champion.h" />
 		<Unit filename="include/Entities/Emeraldo.h" />
 		<Unit filename="include/Entities/Entity.h" />
 		<Unit filename="include/Registry/GameRegistry.h" />
@@ -51,6 +53,7 @@
 		<Unit filename="include/Stage/Stage.h" />
 		<Unit filename="include/Stage/StageManager.h" />
 		<Unit filename="include/Utility/Geometry.h" />
+		<Unit filename="include/Utility/Mechanics.h" />
 		<Unit filename="src/Display/Display.cpp" />
 		<Unit filename="src/Entities/Emeraldo.cpp" />
 		<Unit filename="src/Main.cpp" />
@@ -59,6 +62,7 @@
 		<Unit filename="src/Stage/Stage.cpp" />
 		<Unit filename="src/Stage/StageManager.cpp" />
 		<Unit filename="src/Utility/Geometry.cpp" />
+		<Unit filename="src/Utility/Mechanics.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
