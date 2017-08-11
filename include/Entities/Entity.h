@@ -11,8 +11,10 @@ class Entity
 
         virtual void draw() = 0;
         virtual void update( float dt ) = 0;
-        virtual void input( const sf::Event & event ) = 0;
-        virtual void setID( int id ) = 0;
+        virtual bool isDead() = 0;
+        //virtual void input( const sf::Event & event ) = 0;
+
+        //virtual void setID( int id ) = 0;
     protected:
 
     private:

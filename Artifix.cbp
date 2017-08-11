@@ -48,6 +48,7 @@
 		<Unit filename="include/Entities/Champion.h" />
 		<Unit filename="include/Entities/Emeraldo.h" />
 		<Unit filename="include/Entities/Entity.h" />
+		<Unit filename="include/Entities/Particle.h" />
 		<Unit filename="include/Registry/GameRegistry.h" />
 		<Unit filename="include/Stage/GameState.h" />
 		<Unit filename="include/Stage/Stage.h" />
@@ -56,6 +57,7 @@
 		<Unit filename="include/Utility/Mechanics.h" />
 		<Unit filename="src/Display/Display.cpp" />
 		<Unit filename="src/Entities/Emeraldo.cpp" />
+		<Unit filename="src/Entities/Particle.cpp" />
 		<Unit filename="src/Main.cpp" />
 		<Unit filename="src/Registry/GameRegistry.cpp" />
 		<Unit filename="src/Stage/GameState.cpp" />

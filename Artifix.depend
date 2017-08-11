@@ -1,10 +1,13 @@
 # depslib dependency file v1.0
-1502465995 source:/home/zenibryum/workspace/Artifix/src/Main.cpp
+1502480337 source:/home/zenibryum/workspace/Artifix/src/Main.cpp
 	<SFML/Graphics.hpp>
 	"Display.h"
 	"GameRegistry.h"
 	"StageManager.h"
 	"Emeraldo.h"
+	"Particle.h"
+	<time.h>
+	<stdlib.h>
 
 1502457875 source:/home/zenibryum/workspace/Artifix/src/Registry/GameRegistry.cpp
 	"GameRegistry.h"
@@ -33,7 +36,7 @@
 1502458501 /home/zenibryum/workspace/Artifix/include/Display/Display.h
 	<SFML/Graphics/RenderWindow.hpp>
 
-1502465772 source:/home/zenibryum/workspace/Artifix/src/Stage/GameState.cpp
+1502477381 source:/home/zenibryum/workspace/Artifix/src/Stage/GameState.cpp
 	"GameState.h"
 	<iostream>
 
@@ -44,7 +47,7 @@
 1502465538 /home/zenibryum/workspace/Artifix/include/Stage/Stage.h
 	"Entity.h"
 
-1502465508 /home/zenibryum/workspace/Artifix/include/Entities/Entity.h
+1502475926 /home/zenibryum/workspace/Artifix/include/Entities/Entity.h
 	<SFML/Window/Event.hpp>
 
 1502454363 source:/home/zenibryum/workspace/Artifix/src/Stage/Stage.cpp
@@ -66,23 +69,41 @@
 1502460725 /home/zenibryum/workspace/Artifix/include/Champion.h
 	"Entity.h"
 
-1502469624 source:/home/zenibryum/workspace/Artifix/src/Entities/Emeraldo.cpp
+1502482258 source:/home/zenibryum/workspace/Artifix/src/Entities/Emeraldo.cpp
 	"Emeraldo.h"
 	"GameRegistry.h"
 	"Display.h"
+	"Mechanics.h"
+	"Particle.h"
+	"StageManager.h"
+	"math.h"
+	<stdlib.h>
 	<iostream>
 
-1502469550 /home/zenibryum/workspace/Artifix/include/Entities/Emeraldo.h
+1502478173 /home/zenibryum/workspace/Artifix/include/Entities/Emeraldo.h
 	"Champion.h"
 	<SFML/Graphics/Sprite.hpp>
 
-1502465490 /home/zenibryum/workspace/Artifix/include/Entities/Champion.h
+1502477089 /home/zenibryum/workspace/Artifix/include/Entities/Champion.h
 	"Entity.h"
 	<SFML/Window/Event.hpp>
 
-1502470004 source:/home/zenibryum/workspace/Artifix/src/Utility/Mechanics.cpp
+1502482793 source:/home/zenibryum/workspace/Artifix/src/Utility/Mechanics.cpp
+	"Mechanics.h"
+	"math.h"
+
+1502470324 /home/zenibryum/workspace/Artifix/include/Utility/Mechanics.h
+	<SFML/System/Vector2.hpp>
+
+1502458558 /home/zenibryum/workspace/Artifix/include//Config.h
+
+1502480276 source:/home/zenibryum/workspace/Artifix/src/Entities/Particle.cpp
+	"Particle.h"
+	"GameRegistry.h"
+	"Display.h"
 	"Mechanics.h"
 
-1502469716 /home/zenibryum/workspace/Artifix/include/Utility/Mechanics.h
-	<SFML/System/Vector2.hpp>
+1502478007 /home/zenibryum/workspace/Artifix/include/Entities/Particle.h
+	"Entity.h"
+	<SFML/Graphics/RectangleShape.hpp>
 

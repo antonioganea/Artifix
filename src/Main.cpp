@@ -5,10 +5,18 @@
 #include "StageManager.h"
 
 #include "Emeraldo.h"
+#include "Particle.h"
+
+#include <time.h>
+#include <stdlib.h>
 
 int main()
 {
+    srand(time(NULL));
+
     GameRegistry::queueResource("emeraldo.png",ResourceType::Texture);
+    GameRegistry::queueResource("shard.png",ResourceType::Texture);
+    GameRegistry::loadResource();
     GameRegistry::loadResource();
 
     sf::Texture * tex;
@@ -34,8 +42,9 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 Display::window->close();
-            if (event.type == sf::Event::KeyPressed or event.type == sf::Event::KeyReleased )
-                StageManager::input( event );
+            if (event.type == sf::Event::KeyPressed ){
+            }
+            emeraldo->input(event);
         }
 
         Display::window->clear();

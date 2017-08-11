@@ -4,6 +4,13 @@
 #include "Display.h"
 
 #include "Mechanics.h"
+#include "Particle.h"
+#include "StageManager.h"
+
+#define _USE_MATH_DEFINES
+#include "math.h"
+
+#include <stdlib.h>
 
 #include <iostream>
 
@@ -36,8 +43,19 @@ void Emeraldo::update(float dt)
     Mechanics::applyFriction(velocity,friction);
 
     sprite.move(velocity.x,velocity.y);
+    //disperse();
 }
 
+void Emeraldo::disperse(){
+    float twist = rand()%10000;
+    twist = 31410.f / twist;
+    for ( int i = 0; i < 8; i++ ){
+        float x = cos ( (float(i)) * M_PI/4.f + twist );
+        float y = sin ( (float(i)) * M_PI/4.f + twist );
+        Particle * particle = new Particle(sprite.getPosition(),sf::Vector2f(x,y)*15.f);
+        StageManager::getStage()->addEntity(particle);
+    }
+}
 
 void Emeraldo::input( const sf::Event & event )
 {
@@ -58,6 +76,10 @@ void Emeraldo::input( const sf::Event & event )
             case sf::Keyboard::S :
                 s = true;
                 break;
+            case sf::Keyboard::G :{
+                disperse();
+                break;
+            }
             default:
                 break;
         }
@@ -81,11 +103,18 @@ void Emeraldo::input( const sf::Event & event )
         }
     }
 }
-
+/*
 void Emeraldo::setID(int id)
 {
 
 }
+*/
+
+bool Emeraldo::isDead()
+{
+    return false;
+}
+
 
 void Emeraldo::move()
 {

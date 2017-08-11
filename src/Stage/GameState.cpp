@@ -41,11 +41,32 @@ void GameState::addEntity( Entity * entity )
   */
 void GameState::update(float dt)
 {
-    for ( std::vector<Entity*>::iterator it = m_entities.begin(); it != m_entities.end(); ++it )
+    for ( std::vector<Entity*>::iterator it = m_entities.begin(); it != m_entities.end();)
     {
         (*it)->update(dt);
-    }
+        if ( (*it)->isDead() ){
+            delete (*it);
+            it = m_entities.erase(it);
+        }
+        else
+            ++it;
 
+    }
+/*
+    for(it2 = uc.begin(); it2 != uc.end();)
+    {
+       ...
+       if(...)
+       {
+          it2 = uc.erase(it2);
+       }
+       else
+       {
+          ++it2;
+       }
+       ...
+    }
+*/
     while ( ps_entities.size() )
     {
         m_entities.push_back ( ps_entities.back() );
@@ -58,11 +79,11 @@ void GameState::update(float dt)
   * @todo: document this function
   */
 void GameState::input( const sf::Event & event )
-{
+{/*
     for ( std::vector<Entity*>::iterator it = m_entities.begin(); it != m_entities.end(); ++it )
     {
         (*it)->input(event);
-    }
+    }*/
 }
 
 /** @brief draw

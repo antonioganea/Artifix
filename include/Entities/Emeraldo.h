@@ -11,8 +11,10 @@ class Emeraldo : public Champion{
         void draw();
         void update( float dt );
 
+        bool isDead();
+
         void input( const sf::Event & event );
-        void setID( int id );
+        //void setID( int id );
 
         void move();
         void attack();
@@ -20,6 +22,7 @@ class Emeraldo : public Champion{
 
     protected:
     private:
+        void disperse();
         sf::Sprite sprite;
         sf::Vector2f velocity;
         bool w,a,s,d;
