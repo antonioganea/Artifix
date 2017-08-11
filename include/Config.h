@@ -4,4 +4,7 @@
 #define APP_NAME "Artifix"
 #define APP_VERSION "v0.1.0"
 
+#define WINDOW_WIDTH 800
+#define WINDOW_HEIGHT 600
+
 #endif // CONFIG_H_INCLUDED

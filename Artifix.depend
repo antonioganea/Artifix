@@ -1,7 +1,8 @@
 # depslib dependency file v1.0
-1502457792 source:/home/zenibryum/workspace/Artifix/src/Main.cpp
+1502458611 source:/home/zenibryum/workspace/Artifix/src/Main.cpp
 	<SFML/Graphics.hpp>
-	"Config.h"
+	"Display.h"
+	"GameRegistry.h"
 
 1502457875 source:/home/zenibryum/workspace/Artifix/src/Registry/GameRegistry.cpp
 	"GameRegistry.h"
@@ -15,4 +16,42 @@
 	<SFML/Graphics/Texture.hpp>
 	<SFML/Graphics/Text.hpp>
 	<SFML/Audio/SoundBuffer.hpp>
+
+1502458408 source:/home/zenibryum/workspace/Artifix/src/Utility/Geometry.cpp
+	"Geometry.h"
+	<math.h>
+
+1502458393 /home/zenibryum/workspace/Artifix/include/Utility/Geometry.h
+
+1502458543 source:/home/zenibryum/workspace/Artifix/src/Display/Display.cpp
+	"Display.h"
+	<SFML/Graphics.hpp>
+	"Config.h"
+
+1502458501 /home/zenibryum/workspace/Artifix/include/Display/Display.h
+	<SFML/Graphics/RenderWindow.hpp>
+
+1502459081 source:/home/zenibryum/workspace/Artifix/src/Stage/GameState.cpp
+	"GameState.h"
+	<iostream>
+
+1502459069 /home/zenibryum/workspace/Artifix/include/Stage/GameState.h
+	<vector>
+	"Stage.h"
+
+1502458881 /home/zenibryum/workspace/Artifix/include/Stage/Stage.h
+	"Entity.h"
+
+1502454359 /home/zenibryum/workspace/Artifix/include/Entities/Entity.h
+
+1502454363 source:/home/zenibryum/workspace/Artifix/src/Stage/Stage.cpp
+	"Stage.h"
+
+1502454363 source:/home/zenibryum/workspace/Artifix/src/Stage/StageManager.cpp
+	"StageManager.h"
+	"GameState.h"
+	<iostream>
+
+1502454359 /home/zenibryum/workspace/Artifix/include/Stage/StageManager.h
+	"Stage.h"
 

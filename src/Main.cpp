@@ -1,12 +1,10 @@
 #include <SFML/Graphics.hpp>
 
+#include "Display.h"
 #include "GameRegistry.h"
-#include "Config.h"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(800, 600), APP_NAME);
-    window.setFramerateLimit(60.f);
     GameRegistry::queueResource("emeraldo.png",ResourceType::Texture);
     GameRegistry::loadResource();
 
@@ -16,18 +14,20 @@ int main()
     sf::Sprite spr;
     spr.setTexture(*tex,true);
 
-    while (window.isOpen())
+    Display::init();
+
+    while (Display::window->isOpen())
     {
         sf::Event event;
-        while (window.pollEvent(event))
+        while (Display::window->pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
-                window.close();
+                Display::window->close();
         }
 
-        window.clear();
-        window.draw(spr);
-        window.display();
+        Display::window->clear();
+        Display::window->draw(spr);
+        Display::window->display();
     }
 
     return 0;
