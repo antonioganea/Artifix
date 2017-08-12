@@ -3,7 +3,7 @@
 
 #include "Champion.h"
 #include <SFML/Graphics/Sprite.hpp>
-#include "Particle.h"
+#include "EmeraldoShard.h"
 
 class Emeraldo : public Champion{
     public:
@@ -15,7 +15,8 @@ class Emeraldo : public Champion{
         bool isDead();
 
         void input( const sf::Event & event );
-        //void setID( int id );
+
+        sf::Vector2f getPosition();
 
         void move();
         void attack();
@@ -23,13 +24,14 @@ class Emeraldo : public Champion{
 
     protected:
     private:
-        Particle * dispersionParticles;
+        EmeraldoShard * dispersionParticles;
         void disperse();
         sf::Sprite sprite;
         sf::Vector2f velocity;
         int w,a,s,d;
         bool inDispersion;
         bool visible;
+        int cooldown;
 };
 
 #endif // EMERALDO_H

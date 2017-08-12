@@ -16,14 +16,8 @@ int main()
 
     GameRegistry::queueResource("emeraldo.png",ResourceType::Texture);
     GameRegistry::queueResource("shard.png",ResourceType::Texture);
-    GameRegistry::loadResource();
-    GameRegistry::loadResource();
-
-    sf::Texture * tex;
-    tex = GameRegistry::getResource("emeraldo.png",ResourceType::Texture).texture;
-
-    sf::Sprite spr;
-    spr.setTexture(*tex,true);
+    GameRegistry::queueResource("food.png",ResourceType::Texture);
+    while (!GameRegistry::loadResource()){}
 
     Display::init();
 

@@ -8,6 +8,7 @@ namespace Mechanics
     void applyFriction( sf::Vector2f& velocity, const float& friction );
     void applyMaxSpeed( sf::Vector2f& velocity, const float& maxSpeed );
     void applyAcceleration( sf::Vector2f& velocity, const float& xDir, const float& yDir, const float& acceleration );
+    bool checkEpsilon( const sf::Vector2f& v1, const sf::Vector2f& v2, const float& epsilon );
 }
 
 #endif // MECHANICS_H

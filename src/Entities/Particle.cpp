@@ -4,14 +4,17 @@
 #include "Display.h"
 
 #include "Mechanics.h"
+#include "Emeraldo.h"
 
-sf::RectangleShape * shape;
+//sf::RectangleShape * shape;
+//Emeraldo * caster;
 
 Particle::Particle(){
     sf::Texture * texture = GameRegistry::getResource("shard.png",ResourceType::Texture).texture;
     shape = new sf::RectangleShape( (sf::Vector2f)texture->getSize() );
     shape->setTexture(texture,false);
     lifetime = 0;
+    chasing = false;
 }
 
 Particle::Particle( const sf::Vector2f & _position, const sf::Vector2f & _velocity ){
@@ -22,6 +25,7 @@ Particle::Particle( const sf::Vector2f & _position, const sf::Vector2f & _veloci
     shape = new sf::RectangleShape( (sf::Vector2f)texture->getSize() );
     shape->setTexture(texture,false);
     shape->setPosition(position);
+    chasing = false;
 }
 
 void Particle::reset( const sf::Vector2f & _position, const sf::Vector2f & _velocity ){
@@ -29,6 +33,7 @@ void Particle::reset( const sf::Vector2f & _position, const sf::Vector2f & _velo
     velocity = _velocity;
     lifetime=30;
     shape->setPosition(position);
+    chasing = false;
 }
 
 void Particle::attack( const sf::Vector2f& target ){
@@ -59,7 +64,21 @@ void Particle::update(float dt)
     shape->setPosition(position);
     if (lifetime)
         lifetime--;
+    else
+        chase();
 }
+
+void Particle::chase(){
+    if ( Mechanics::checkEpsilon(caster->getPosition(),position,0.5f) ){
+        chasing = false;
+        return;
+    }
+    velocity = caster->getPosition()-position;
+    Mechanics::applyMaxSpeed(velocity,15.f);
+    chasing = true;
+}
+
+
 /*
 void Particle::input(const sf::Event& event)
 {
@@ -73,5 +92,5 @@ void Particle::setID(int id)
 */
 bool Particle::isDead()
 {
-    return !lifetime;
+    return !chasing && !lifetime;
 }

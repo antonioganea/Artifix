@@ -4,6 +4,7 @@
 #include "Entity.h"
 #include <SFML/Graphics/RectangleShape.hpp>
 
+class Emeraldo;
 
 class Particle : public Entity
 {
@@ -18,6 +19,8 @@ class Particle : public Entity
         void update( float dt );
 
         void attack( const sf::Vector2f& target );
+
+        void chase();
         //void setVelocity( const sf::Vector2f& velocity );
         //void setLifeTime( const int& lifetime);
 
@@ -28,6 +31,9 @@ class Particle : public Entity
         sf::Vector2f position;
         sf::Vector2f velocity;
         int lifetime;
+        bool chasing;
+
+        Emeraldo * caster;
     protected:
     private:
 };

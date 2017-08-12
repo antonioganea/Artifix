@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1502480337 source:/home/zenibryum/workspace/Artifix/src/Main.cpp
+1502531502 source:/home/zenibryum/workspace/Artifix/src/Main.cpp
 	<SFML/Graphics.hpp>
 	"Display.h"
 	"GameRegistry.h"
@@ -69,42 +69,54 @@
 1502460725 /home/zenibryum/workspace/Artifix/include/Champion.h
 	"Entity.h"
 
-1502528156 source:/home/zenibryum/workspace/Artifix/src/Entities/Emeraldo.cpp
+1502540939 source:/home/zenibryum/workspace/Artifix/src/Entities/Emeraldo.cpp
 	"Emeraldo.h"
 	"GameRegistry.h"
 	"Display.h"
 	"Mechanics.h"
-	"Particle.h"
+	"EmeraldoShard.h"
 	"StageManager.h"
 	"math.h"
 	<stdlib.h>
 	<iostream>
 
-1502527982 /home/zenibryum/workspace/Artifix/include/Entities/Emeraldo.h
+1502539985 /home/zenibryum/workspace/Artifix/include/Entities/Emeraldo.h
 	"Champion.h"
 	<SFML/Graphics/Sprite.hpp>
-	"Particle.h"
+	"EmeraldoShard.h"
 
 1502477089 /home/zenibryum/workspace/Artifix/include/Entities/Champion.h
 	"Entity.h"
 	<SFML/Window/Event.hpp>
 
-1502482793 source:/home/zenibryum/workspace/Artifix/src/Utility/Mechanics.cpp
+1502540513 source:/home/zenibryum/workspace/Artifix/src/Utility/Mechanics.cpp
 	"Mechanics.h"
-	"math.h"
+	<cmath>
 
-1502470324 /home/zenibryum/workspace/Artifix/include/Utility/Mechanics.h
+1502540342 /home/zenibryum/workspace/Artifix/include/Utility/Mechanics.h
 	<SFML/System/Vector2.hpp>
 
 1502458558 /home/zenibryum/workspace/Artifix/include//Config.h
 
-1502528189 source:/home/zenibryum/workspace/Artifix/src/Entities/Particle.cpp
+1502540466 source:/home/zenibryum/workspace/Artifix/src/Entities/Particle.cpp
 	"Particle.h"
 	"GameRegistry.h"
 	"Display.h"
 	"Mechanics.h"
+	"Emeraldo.h"
 
-1502526826 /home/zenibryum/workspace/Artifix/include/Entities/Particle.h
+1502536479 /home/zenibryum/workspace/Artifix/include/Entities/Particle.h
+	"Entity.h"
+	<SFML/Graphics/RectangleShape.hpp>
+
+1502540742 source:/home/zenibryum/workspace/Artifix/src/Entities/EmeraldoShard.cpp
+	"EmeraldoShard.h"
+	"GameRegistry.h"
+	"Display.h"
+	"Mechanics.h"
+	"Emeraldo.h"
+
+1502538420 /home/zenibryum/workspace/Artifix/include/Entities/EmeraldoShard.h
 	"Entity.h"
 	<SFML/Graphics/RectangleShape.hpp>
 
