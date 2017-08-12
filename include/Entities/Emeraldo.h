@@ -3,6 +3,7 @@
 
 #include "Champion.h"
 #include <SFML/Graphics/Sprite.hpp>
+#include "Particle.h"
 
 class Emeraldo : public Champion{
     public:
@@ -22,10 +23,13 @@ class Emeraldo : public Champion{
 
     protected:
     private:
+        Particle * dispersionParticles;
         void disperse();
         sf::Sprite sprite;
         sf::Vector2f velocity;
-        bool w,a,s,d;
+        int w,a,s,d;
+        bool inDispersion;
+        bool visible;
 };
 
 #endif // EMERALDO_H

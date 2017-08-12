@@ -14,4 +14,5 @@ void Display::init()
 {
     Display::window = new sf::RenderWindow( sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), APP_NAME );
     Display::window->setFramerateLimit(60);
+    Display::window->setKeyRepeatEnabled(false);
 }

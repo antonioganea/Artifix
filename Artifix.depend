@@ -28,7 +28,7 @@
 
 1502458393 /home/zenibryum/workspace/Artifix/include/Utility/Geometry.h
 
-1502458543 source:/home/zenibryum/workspace/Artifix/src/Display/Display.cpp
+1502484841 source:/home/zenibryum/workspace/Artifix/src/Display/Display.cpp
 	"Display.h"
 	<SFML/Graphics.hpp>
 	"Config.h"
@@ -69,7 +69,7 @@
 1502460725 /home/zenibryum/workspace/Artifix/include/Champion.h
 	"Entity.h"
 
-1502482258 source:/home/zenibryum/workspace/Artifix/src/Entities/Emeraldo.cpp
+1502528156 source:/home/zenibryum/workspace/Artifix/src/Entities/Emeraldo.cpp
 	"Emeraldo.h"
 	"GameRegistry.h"
 	"Display.h"
@@ -80,9 +80,10 @@
 	<stdlib.h>
 	<iostream>
 
-1502478173 /home/zenibryum/workspace/Artifix/include/Entities/Emeraldo.h
+1502527982 /home/zenibryum/workspace/Artifix/include/Entities/Emeraldo.h
 	"Champion.h"
 	<SFML/Graphics/Sprite.hpp>
+	"Particle.h"
 
 1502477089 /home/zenibryum/workspace/Artifix/include/Entities/Champion.h
 	"Entity.h"
@@ -97,13 +98,13 @@
 
 1502458558 /home/zenibryum/workspace/Artifix/include//Config.h
 
-1502480276 source:/home/zenibryum/workspace/Artifix/src/Entities/Particle.cpp
+1502528189 source:/home/zenibryum/workspace/Artifix/src/Entities/Particle.cpp
 	"Particle.h"
 	"GameRegistry.h"
 	"Display.h"
 	"Mechanics.h"
 
-1502478007 /home/zenibryum/workspace/Artifix/include/Entities/Particle.h
+1502526826 /home/zenibryum/workspace/Artifix/include/Entities/Particle.h
 	"Entity.h"
 	<SFML/Graphics/RectangleShape.hpp>
 

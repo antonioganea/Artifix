@@ -19,6 +19,9 @@ Emeraldo::Emeraldo(){
     sprite.setTexture( *texture, true );
     velocity.x = velocity.y = 0;
     w = a = s = d = false;
+    dispersionParticles = new Particle[8];
+    inDispersion = false;
+    visible = true;
 }
 
 /*
@@ -30,14 +33,46 @@ Emeraldo::~Emeraldo()
 
 void Emeraldo::draw()
 {
-    Display::window->draw(sprite);
+    if( inDispersion ){
+        for ( int i = 0; i < 8; i++ ){
+            dispersionParticles[i].draw();
+        }
+    }
+    else{
+        Display::window->draw(sprite);
+    }
 }
 
 const float acceleration = 0.3f;
 const float friction = 0.1f;
 
+int lookup[9] = {5,4,3,6,-1,2,7,0,1};//proud of this
+
 void Emeraldo::update(float dt)
 {
+    if( !dispersionParticles->isDead()){
+            for ( int i = 0; i < 8; i++ ){
+                dispersionParticles[i].update(dt);
+            }
+    }
+    else{
+        if ( inDispersion ){
+            int dispersionParticleNo = lookup[ (d-a+1)*3 + s-w+1 ];
+            if ( dispersionParticleNo != -1 ){
+                inDispersion = false;
+                sprite.setPosition(dispersionParticles[dispersionParticleNo].position);
+                velocity *= 0.0f;
+            }
+
+            /*
+            for ( int i = 0; i < 8; i++ ){
+
+                //dispersionParticles[i].setLifeTime(30);
+                //dispersionParticles[i].attack(sprite.getPosition());
+            }*/
+        }
+    }
+
     Mechanics::applyAcceleration(velocity,d-a,s-w,acceleration);
     Mechanics::applyMaxSpeed(velocity,5.0f);
     Mechanics::applyFriction(velocity,friction);
@@ -47,13 +82,16 @@ void Emeraldo::update(float dt)
 }
 
 void Emeraldo::disperse(){
-    float twist = rand()%10000;
-    twist = 31410.f / twist;
+    if( inDispersion )
+        return;
+    inDispersion = true;
+    //float twist = rand()%10000;
+    //twist = 31410.f / twist;
     for ( int i = 0; i < 8; i++ ){
-        float x = cos ( (float(i)) * M_PI/4.f + twist );
-        float y = sin ( (float(i)) * M_PI/4.f + twist );
-        Particle * particle = new Particle(sprite.getPosition(),sf::Vector2f(x,y)*15.f);
-        StageManager::getStage()->addEntity(particle);
+        float x = cos ( (float(i)) * M_PI/4.f ); //+ twist );
+        float y = sin ( (float(i)) * M_PI/4.f ); //+ twist );
+        dispersionParticles[i].reset(sprite.getPosition(),sf::Vector2f(x,y)*20.f);
+        //StageManager::getStage()->addEntity(dispersionParticles+i);
     }
 }
 
