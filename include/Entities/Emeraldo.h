@@ -32,6 +32,7 @@ class Emeraldo : public Champion{
         bool inDispersion;
         bool visible;
         int cooldown;
+        int animationTimer;
 };
 
 #endif // EMERALDO_H

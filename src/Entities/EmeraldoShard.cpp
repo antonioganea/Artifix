@@ -6,6 +6,8 @@
 #include "Mechanics.h"
 #include "Emeraldo.h"
 
+#include <stdlib.h>
+
 //sf::RectangleShape * shape;
 //Emeraldo * caster;
 
@@ -13,8 +15,11 @@ EmeraldoShard::EmeraldoShard(){
     sf::Texture * texture = GameRegistry::getResource("shard.png",ResourceType::Texture).texture;
     shape = new sf::RectangleShape( (sf::Vector2f)texture->getSize() );
     shape->setTexture(texture,false);
+    shape->setScale(4.f,4.f);
     lifetime = 0;
     chasing = false;
+    rotationalSpeed = rand()%10+30;
+    shape->setOrigin(4,4);
 }
 
 EmeraldoShard::EmeraldoShard( const sf::Vector2f & _position, const sf::Vector2f & _velocity ){
@@ -31,6 +36,7 @@ void EmeraldoShard::reset( const sf::Vector2f & _position, const sf::Vector2f & 
     lifetime=30;
     shape->setPosition(position);
     chasing = false;
+    rotationalSpeed = rand()%10+30;if ( rand()%2 ) rotationalSpeed*=-1;
 }
 
 EmeraldoShard::~EmeraldoShard()
@@ -39,6 +45,9 @@ EmeraldoShard::~EmeraldoShard()
 }
 
 void EmeraldoShard::draw(){
+
+    shape->setRotation( rotationalSpeed + shape->getRotation() );
+
     Display::window->draw(*shape);
 }
 

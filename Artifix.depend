@@ -69,7 +69,7 @@
 1502460725 /home/zenibryum/workspace/Artifix/include/Champion.h
 	"Entity.h"
 
-1502540939 source:/home/zenibryum/workspace/Artifix/src/Entities/Emeraldo.cpp
+1502611486 source:/home/zenibryum/workspace/Artifix/src/Entities/Emeraldo.cpp
 	"Emeraldo.h"
 	"GameRegistry.h"
 	"Display.h"
@@ -80,7 +80,7 @@
 	<stdlib.h>
 	<iostream>
 
-1502539985 /home/zenibryum/workspace/Artifix/include/Entities/Emeraldo.h
+1502611265 /home/zenibryum/workspace/Artifix/include/Entities/Emeraldo.h
 	"Champion.h"
 	<SFML/Graphics/Sprite.hpp>
 	"EmeraldoShard.h"
@@ -109,14 +109,15 @@
 	"Entity.h"
 	<SFML/Graphics/RectangleShape.hpp>
 
-1502540742 source:/home/zenibryum/workspace/Artifix/src/Entities/EmeraldoShard.cpp
+1502611850 source:/home/zenibryum/workspace/Artifix/src/Entities/EmeraldoShard.cpp
 	"EmeraldoShard.h"
 	"GameRegistry.h"
 	"Display.h"
 	"Mechanics.h"
 	"Emeraldo.h"
+	<stdlib.h>
 
-1502538420 /home/zenibryum/workspace/Artifix/include/Entities/EmeraldoShard.h
+1502611603 /home/zenibryum/workspace/Artifix/include/Entities/EmeraldoShard.h
 	"Entity.h"
 	<SFML/Graphics/RectangleShape.hpp>
 

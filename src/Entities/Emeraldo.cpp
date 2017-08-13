@@ -16,7 +16,10 @@
 
 Emeraldo::Emeraldo(){
     sf::Texture * texture = GameRegistry::getResource("emeraldo.png",ResourceType::Texture).texture;
-    sprite.setTexture( *texture, true );
+    sprite.setTexture( *texture, false );
+    sprite.setScale(2.f,2.f);
+    sprite.setOrigin(8.f,8.f);
+    sprite.setTextureRect(sf::IntRect(sf::Vector2i(0,0),sf::Vector2i(16,16)));
     velocity.x = velocity.y = 0;
     w = a = s = d = false;
     dispersionParticles = new EmeraldoShard[8];
@@ -24,6 +27,7 @@ Emeraldo::Emeraldo(){
     inDispersion = false;
     visible = true;
     cooldown = 0;
+    animationTimer = 0;
 }
 
 void Emeraldo::draw()
@@ -80,6 +84,12 @@ void Emeraldo::update(float dt)
     Mechanics::applyAcceleration(velocity,d-a,s-w,acceleration);
     Mechanics::applyMaxSpeed(velocity,5.0f);
     Mechanics::applyFriction(velocity,friction);
+
+    animationTimer++;
+    if ( animationTimer >= 40 )
+        animationTimer = 0;
+
+    sprite.setTextureRect(sf::IntRect(sf::Vector2i(16*(animationTimer/5),0),sf::Vector2i(16,16)));
 
     sprite.move(velocity.x,velocity.y);
 

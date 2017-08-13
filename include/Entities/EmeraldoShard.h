@@ -28,6 +28,8 @@ class EmeraldoShard : public Entity
         int lifetime;
         bool chasing;
 
+        float rotationalSpeed;
+
         EmeraldoShard * target;
     protected:
     private:
