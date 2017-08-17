@@ -1,14 +1,14 @@
-#ifndef EMERALDO_H
-#define EMERALDO_H
+#ifndef RUBIE_H
+#define RUBIE_H
 
 #include "Crystal.h"
+#include "RubieLaser.h"
 #include <SFML/Graphics/Sprite.hpp>
-#include "EmeraldoShard.h"
 
-class Emeraldo : public Crystal{
+class Rubie : public Crystal{
     public:
-        Emeraldo();
-        //virtual ~Emeraldo();
+        Rubie();
+        //virtual ~Rubie();
         void draw();
         void update( float dt );
 
@@ -21,19 +21,16 @@ class Emeraldo : public Crystal{
         void move();
         void attack();
         void ultimate();
-
     protected:
     private:
-        EmeraldoShard * dispersionParticles;
-        void disperse();
+        void shoot();
+        RubieLaser * lasers;
         sf::Sprite sprite;
         sf::Vector2f velocity;
         int w,a,s,d;
-        bool inDispersion;
-        bool visible;
         int cooldown;
         int animationTimer;
-        int dispersionParticleNo = 0;
+
 };
 
-#endif // EMERALDO_H
+#endif // RUBIE_H

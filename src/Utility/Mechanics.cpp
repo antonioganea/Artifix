@@ -77,3 +77,7 @@ bool Mechanics::checkEpsilon(const sf::Vector2f& v1, const sf::Vector2f& v2, con
         return true;
     return false;
 }
+
+float Mechanics::getSpeed( const sf::Vector2f& velocity ){
+    return sqrt(velocity.x*velocity.x+velocity.y*velocity.y);
+}

@@ -1,14 +1,14 @@
-#ifndef CHAMPION_H
-#define CHAMPION_H
+#ifndef CRYSTAL_H
+#define CRYSTAL_H
 
 #include "Entity.h"
 #include <SFML/Window/Event.hpp>
 
-class Champion : public Entity
+class Crystal : public Entity
 {
     public:
-        //Champion();
-        //virtual ~Champion();
+        //Crystal();
+        //virtual ~Crystal();
 
         virtual void draw() = 0;
         virtual void update( float dt ) = 0;
@@ -25,4 +25,4 @@ class Champion : public Entity
     private:
 };
 
-#endif // CHAMPION_H
+#endif // CRYSTAL_H

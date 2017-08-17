@@ -1,10 +1,9 @@
-#include "Emeraldo.h"
+#include "Rubie.h"
 
 #include "GameRegistry.h"
 #include "Display.h"
 
 #include "Mechanics.h"
-#include "EmeraldoShard.h"
 #include "StageManager.h"
 
 #define _USE_MATH_DEFINES
@@ -14,72 +13,47 @@
 
 #include <iostream>
 
-Emeraldo::Emeraldo(){
-    sf::Texture * texture = GameRegistry::getResource("emeraldo.png",ResourceType::Texture).texture;
+#define MAX_LASERS 16
+
+Rubie::Rubie(){
+    sf::Texture * texture = GameRegistry::getResource("rubie.png",ResourceType::Texture).texture;
     sprite.setTexture( *texture, false );
     sprite.setScale(2.f,2.f);
     sprite.setOrigin(8.f,8.f);
     sprite.setTextureRect(sf::IntRect(sf::Vector2i(0,0),sf::Vector2i(16,16)));
     velocity.x = velocity.y = 0;
     w = a = s = d = false;
-    dispersionParticles = new EmeraldoShard[8];
-    for ( int i = 0; i < 8; i++ ) dispersionParticles[i].target = dispersionParticles;
-    inDispersion = false;
-    visible = true;
     cooldown = 0;
     animationTimer = 0;
-    dispersionParticleNo = 0;
+
+    lasers = new RubieLaser[MAX_LASERS];
 }
 
-void Emeraldo::draw()
+void Rubie::draw()
 {
-    if( inDispersion )
-    {
-        for ( int i = 0; i < 8; i++ ){
-            dispersionParticles[i].draw();
+    for ( int i = 0; i < MAX_LASERS; i++ ){
+        if ( !lasers[i].isDead() ){
+            lasers[i].draw();
         }
     }
-    else
-    {
-        Display::window->draw(sprite);
-    }
+    Display::window->draw(sprite);
 }
 
-sf::Vector2f Emeraldo::getPosition()
+sf::Vector2f Rubie::getPosition()
 {
     return sprite.getPosition();
 }
 
-
 const float acceleration = 0.3f;
 const float friction = 0.1f;
 
-int lookup[9] = {5,4,3,6,-1,2,7,0,1};//proud of this
-
-void Emeraldo::update(float dt)
+void Rubie::update(float dt)
 {
-    for ( int i = 0; i < 8; i++ ){
-        dispersionParticles[i].update(dt);
+    for ( int i = 0; i < MAX_LASERS; i++ ){
+        if ( !lasers[i].isDead() ){
+            lasers[i].update( dt );
+        }
     }
-
-
-    int count = 0;
-    for ( int i = 0; i < 8; i++ )
-        if (dispersionParticles[i].isDead())
-            count++;
-
-    if ( count==8 && inDispersion ){
-        inDispersion = false;
-        sprite.setPosition(dispersionParticles[0].position);
-        velocity *= 0.0f;
-    }
-
-
-    std::cout << dispersionParticleNo << "    ";
-    for ( int i = 0; i < 8; i++ )
-        std::cout << dispersionParticles[i].isDead() << " ";
-    std::cout << std::endl;
-
     Mechanics::applyAcceleration(velocity,d-a,s-w,acceleration);
     Mechanics::applyMaxSpeed(velocity,5.0f);
     Mechanics::applyFriction(velocity,friction);
@@ -95,23 +69,18 @@ void Emeraldo::update(float dt)
     if (cooldown) cooldown--;
 }
 
-void Emeraldo::disperse(){
-    if ( !cooldown ){
-        dispersionParticleNo = lookup[ (d-a+1)*3 + s-w+1 ];
-        if ( dispersionParticleNo != -1 ){
-            for ( int i = 0; i < 8; i++ ){
-                float x = cos ( (float(i)) * M_PI/4.f );
-                float y = sin ( (float(i)) * M_PI/4.f );
-                dispersionParticles[i].reset(sprite.getPosition(),sf::Vector2f(x,y)*20.f);
-                dispersionParticles[i].target = dispersionParticles+dispersionParticleNo;
-            }
-        cooldown = 60;
-        inDispersion = true;
+void Rubie::shoot(){
+    if (!( d-a or s-w )) // if no direction is available
+        return;
+    for ( int i = 0; i < MAX_LASERS; i++ ){
+        if ( lasers[i].isDead() ){
+            lasers[i].reset(sprite.getPosition(),sf::Vector2f((d-a),(s-w))*25.f);
+            break;
         }
     }
 }
 
-void Emeraldo::input( const sf::Event & event )
+void Rubie::input( const sf::Event & event )
 {
     if ( event.type == sf::Event::LostFocus ){
         w = a = s = d = false;
@@ -131,7 +100,7 @@ void Emeraldo::input( const sf::Event & event )
                 s = true;
                 break;
             case sf::Keyboard::G :{
-                disperse();
+                shoot();
                 break;
             }
             default:
@@ -157,30 +126,24 @@ void Emeraldo::input( const sf::Event & event )
         }
     }
 }
-/*
-void Emeraldo::setID(int id)
-{
 
-}
-*/
-
-bool Emeraldo::isDead()
+bool Rubie::isDead()
 {
     return false;
 }
 
 
-void Emeraldo::move()
+void Rubie::move()
 {
 
 }
 
-void Emeraldo::attack()
+void Rubie::attack()
 {
 
 }
 
-void Emeraldo::ultimate()
+void Rubie::ultimate()
 {
 
 }

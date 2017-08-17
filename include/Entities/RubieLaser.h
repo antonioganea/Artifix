@@ -1,24 +1,22 @@
-#ifndef EMERALDOSHARD_H
-#define EMERALDOSHARD_H
+#ifndef RUBIELASER_H
+#define RUBIELASER_H
 
 #include "Entity.h"
 #include <SFML/Graphics/RectangleShape.hpp>
 
-class Emeraldo;
+class Rubie;
 
-class EmeraldoShard : public Entity
+class RubieLaser : public Entity
 {
     public:
-        EmeraldoShard();
-        EmeraldoShard( const sf::Vector2f & position, const sf::Vector2f & velocity );
-        virtual ~EmeraldoShard();
+        RubieLaser();
+        RubieLaser( const sf::Vector2f & position, const sf::Vector2f & velocity );
+        virtual ~RubieLaser();
 
         void reset( const sf::Vector2f & position, const sf::Vector2f & velocity );
 
         void draw();
         void update( float dt );
-
-        void chase();
 
         bool isDead();
 
@@ -26,13 +24,12 @@ class EmeraldoShard : public Entity
         sf::Vector2f position;
         sf::Vector2f velocity;
         int lifetime;
-        bool chasing;
 
-        float rotationalSpeed;
 
-        EmeraldoShard * target;
     protected:
     private:
+        float rotationalSpeed;
+        int animationTimer;
 };
 
-#endif // EMERALDOSHARD_H
+#endif // RUBIELASER_H

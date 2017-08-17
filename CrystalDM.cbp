@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Artifix" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Artifix" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="include/Registry" />
+					<Add directory="include/Utility" />
+					<Add directory="include/Display" />
+					<Add directory="include/Stage" />
+					<Add directory="include/Entities" />
+					<Add directory="include/" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Artifix" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="include/Registry" />
+					<Add directory="include/Utility" />
+					<Add directory="include/Display" />
+					<Add directory="include/Stage" />
+					<Add directory="include/Entities" />
+					<Add directory="include/" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="include/Config.h" />
+		<Unit filename="include/Display/Display.h" />
+		<Unit filename="include/Entities/Crystal.h" />
+		<Unit filename="include/Entities/Emeraldo.h" />
+		<Unit filename="include/Entities/EmeraldoShard.h" />
+		<Unit filename="include/Entities/Entity.h" />
+		<Unit filename="include/Entities/Particle.h" />
+		<Unit filename="include/Entities/Rubie.h" />
+		<Unit filename="include/Entities/RubieLaser.h" />
+		<Unit filename="include/Registry/GameRegistry.h" />
+		<Unit filename="include/Stage/GameState.h" />
+		<Unit filename="include/Stage/Stage.h" />
+		<Unit filename="include/Stage/StageManager.h" />
+		<Unit filename="include/Utility/Geometry.h" />
+		<Unit filename="include/Utility/Mechanics.h" />
+		<Unit filename="src/Display/Display.cpp" />
+		<Unit filename="src/Entities/Emeraldo.cpp" />
+		<Unit filename="src/Entities/EmeraldoShard.cpp" />
+		<Unit filename="src/Entities/Particle.cpp" />
+		<Unit filename="src/Entities/Rubie.cpp" />
+		<Unit filename="src/Entities/RubieLaser.cpp" />
+		<Unit filename="src/Main.cpp" />
+		<Unit filename="src/Registry/GameRegistry.cpp" />
+		<Unit filename="src/Stage/GameState.cpp" />
+		<Unit filename="src/Stage/Stage.cpp" />
+		<Unit filename="src/Stage/StageManager.cpp" />
+		<Unit filename="src/Utility/Geometry.cpp" />
+		<Unit filename="src/Utility/Mechanics.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
