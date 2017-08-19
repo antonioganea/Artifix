@@ -24,16 +24,21 @@ class Emeraldo : public Crystal{
 
     protected:
     private:
+        const static float acceleration;
+        const static float friction;
+        const static int lookup[9];
+        const static int abilityCooldown;
+
+        sf::Sprite sprite;
+
         EmeraldoShard * dispersionParticles;
         void disperse();
-        sf::Sprite sprite;
-        sf::Vector2f velocity;
+
         int w,a,s,d;
-        bool inDispersion;
-        bool visible;
-        int cooldown;
-        int animationTimer;
-        int dispersionParticleNo = 0;
+        sf::Vector2f velocity;
+
+        bool inDispersion, visible;
+        int cooldown, animationTimer, dispersionParticleNo;
 };
 
 #endif // EMERALDO_H

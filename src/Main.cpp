@@ -6,6 +6,7 @@
 
 #include "Emeraldo.h"
 #include "Rubie.h"
+#include "Sapheer.h"
 #include "Particle.h"
 
 #include <time.h>
@@ -17,9 +18,11 @@ int main()
 
     GameRegistry::queueResource("emeraldo.png",ResourceType::Texture);
     GameRegistry::queueResource("shard.png",ResourceType::Texture);
-    GameRegistry::queueResource("food.png",ResourceType::Texture);
+    //GameRegistry::queueResource("food.png",ResourceType::Texture);
     GameRegistry::queueResource("rubie.png",ResourceType::Texture);
     GameRegistry::queueResource("laser.png",ResourceType::Texture);
+    GameRegistry::queueResource("sapheer.png",ResourceType::Texture);
+    GameRegistry::queueResource("walls.png",ResourceType::Texture);
     while (!GameRegistry::loadResource()){}
 
     Display::init();
@@ -28,10 +31,11 @@ int main()
 
     Stage * stage = StageManager::getStage();
 
-    //Emeraldo * emeraldo = new Emeraldo();
-    Rubie * rubie = new Rubie();
+    //Emeraldo * champion = new Emeraldo();
+    //Rubie * champion = new Rubie();
+    Sapheer * champion = new Sapheer();
 
-    stage->addEntity(rubie);
+    stage->addEntity(champion);
 
     while (Display::window->isOpen())
     {
@@ -42,7 +46,7 @@ int main()
                 Display::window->close();
             if (event.type == sf::Event::KeyPressed ){
             }
-            rubie->input(event);
+            champion->input(event);
         }
 
         Display::window->clear();

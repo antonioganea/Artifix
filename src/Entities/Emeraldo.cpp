@@ -11,21 +11,28 @@
 #include "math.h"
 
 #include <stdlib.h>
-
 #include <iostream>
+
+const float Emeraldo::acceleration = 0.3f;
+const float Emeraldo::friction = 0.1f;
+const int Emeraldo::lookup[9] = {5,4,3,6,-1,2,7,0,1};//proud of this
+const int Emeraldo::abilityCooldown = 60;
 
 Emeraldo::Emeraldo(){
     sf::Texture * texture = GameRegistry::getResource("emeraldo.png",ResourceType::Texture).texture;
     sprite.setTexture( *texture, false );
-    sprite.setScale(2.f,2.f);
-    sprite.setOrigin(8.f,8.f);
-    sprite.setTextureRect(sf::IntRect(sf::Vector2i(0,0),sf::Vector2i(16,16)));
-    velocity.x = velocity.y = 0;
-    w = a = s = d = false;
+    sprite.setScale( 2.f, 2.f );
+    sprite.setOrigin( 8.f, 8.f );
+    sprite.setTextureRect( sf::IntRect( sf::Vector2i(0,0), sf::Vector2i(16,16) ) );
+
     dispersionParticles = new EmeraldoShard[8];
     for ( int i = 0; i < 8; i++ ) dispersionParticles[i].target = dispersionParticles;
     inDispersion = false;
+
+    w = a = s = d = false;
     visible = true;
+
+    velocity.x = velocity.y = 0;
     cooldown = 0;
     animationTimer = 0;
     dispersionParticleNo = 0;
@@ -34,34 +41,20 @@ Emeraldo::Emeraldo(){
 void Emeraldo::draw()
 {
     if( inDispersion )
-    {
-        for ( int i = 0; i < 8; i++ ){
+        for ( int i = 0; i < 8; i++ )
             dispersionParticles[i].draw();
-        }
-    }
     else
-    {
         Display::window->draw(sprite);
-    }
 }
 
-sf::Vector2f Emeraldo::getPosition()
-{
+sf::Vector2f Emeraldo::getPosition(){
     return sprite.getPosition();
 }
 
-
-const float acceleration = 0.3f;
-const float friction = 0.1f;
-
-int lookup[9] = {5,4,3,6,-1,2,7,0,1};//proud of this
-
 void Emeraldo::update(float dt)
 {
-    for ( int i = 0; i < 8; i++ ){
+    for ( int i = 0; i < 8; i++ )
         dispersionParticles[i].update(dt);
-    }
-
 
     int count = 0;
     for ( int i = 0; i < 8; i++ )
@@ -74,11 +67,12 @@ void Emeraldo::update(float dt)
         velocity *= 0.0f;
     }
 
-
+/*
     std::cout << dispersionParticleNo << "    ";
     for ( int i = 0; i < 8; i++ )
         std::cout << dispersionParticles[i].isDead() << " ";
     std::cout << std::endl;
+*/
 
     Mechanics::applyAcceleration(velocity,d-a,s-w,acceleration);
     Mechanics::applyMaxSpeed(velocity,5.0f);
@@ -105,7 +99,7 @@ void Emeraldo::disperse(){
                 dispersionParticles[i].reset(sprite.getPosition(),sf::Vector2f(x,y)*20.f);
                 dispersionParticles[i].target = dispersionParticles+dispersionParticleNo;
             }
-        cooldown = 60;
+        cooldown = abilityCooldown;
         inDispersion = true;
         }
     }
@@ -157,30 +151,20 @@ void Emeraldo::input( const sf::Event & event )
         }
     }
 }
-/*
-void Emeraldo::setID(int id)
-{
 
-}
-*/
-
-bool Emeraldo::isDead()
-{
+bool Emeraldo::isDead(){
     return false;
 }
 
 
-void Emeraldo::move()
-{
+void Emeraldo::move(){
 
 }
 
-void Emeraldo::attack()
-{
+void Emeraldo::attack(){
 
 }
 
-void Emeraldo::ultimate()
-{
+void Emeraldo::ultimate(){
 
 }

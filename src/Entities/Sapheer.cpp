@@ -1,4 +1,4 @@
-#include "Rubie.h"
+#include "Sapheer.h"
 
 #include "GameRegistry.h"
 #include "Display.h"
@@ -13,48 +13,43 @@
 
 #include <iostream>
 
-#define MAX_LASERS 16
-
-const float Rubie::acceleration = 0.3f;
-const float Rubie::friction = 0.1f;
-const int Rubie::abilityCooldown = 60;
-
-Rubie::Rubie(){
-    sf::Texture * texture = GameRegistry::getResource("rubie.png",ResourceType::Texture).texture;
+Sapheer::Sapheer(){
+    sf::Texture * texture = GameRegistry::getResource("sapheer.png",ResourceType::Texture).texture;
     sprite.setTexture( *texture, false );
     sprite.setScale(2.f,2.f);
+    //sprite.setOrigin(8.f,8.f);
     sprite.setOrigin(8.f,8.f);
     sprite.setTextureRect(sf::IntRect(sf::Vector2i(0,0),sf::Vector2i(16,16)));
+
+    texture = GameRegistry::getResource("walls.png",ResourceType::Texture).texture;
+    shield = new sf::RectangleShape( sf::Vector2f(256,256) );
+    shield->setTexture(texture,true);
+    shield->setOrigin(128.f,128.f);
+    shield->setScale(2.f,2.f);
+
     velocity.x = velocity.y = 0;
     w = a = s = d = false;
     cooldown = 0;
     animationTimer = 0;
-
-    lasers = new RubieLaser[MAX_LASERS];
+    shieldTimer = 20;
 }
 
-void Rubie::draw()
-{
-    for ( int i = 0; i < MAX_LASERS; i++ ){
-        if ( !lasers[i].isDead() ){
-            lasers[i].draw();
-        }
-    }
+void Sapheer::draw(){
+    if ( shieldTimer != 20 )
+        Display::window->draw(*shield);
+
     Display::window->draw(sprite);
 }
 
-sf::Vector2f Rubie::getPosition()
-{
+sf::Vector2f Sapheer::getPosition(){
     return sprite.getPosition();
 }
 
-void Rubie::update(float dt)
+const float acceleration = 0.3f;
+const float friction = 0.1f;
+
+void Sapheer::update(float dt)
 {
-    for ( int i = 0; i < MAX_LASERS; i++ ){
-        if ( !lasers[i].isDead() ){
-            lasers[i].update( dt );
-        }
-    }
     if ( Mechanics::getSpeed(velocity) < 5.0f ){
         Mechanics::applyAcceleration(velocity,d-a,s-w,acceleration);
         Mechanics::applyMaxSpeed(velocity,5.0f);
@@ -65,14 +60,21 @@ void Rubie::update(float dt)
     if ( animationTimer >= 25 )
         animationTimer = 0;
 
+    if ( shieldTimer && shieldTimer < 20 )
+        shieldTimer++;
+
+    //std::cout << "Timer : " << shieldTimer << std::endl;
+
     sprite.setTextureRect(sf::IntRect(sf::Vector2i(16*(animationTimer/5),0),sf::Vector2i(16,16)));
+    shield->setTextureRect(sf::IntRect(sf::Vector2i(256*(shieldTimer/5),0),sf::Vector2i(256,256)));
 
     sprite.move(velocity.x,velocity.y);
+    shield->setPosition(sprite.getPosition());
 
     if (cooldown) cooldown--;
 }
-
-void Rubie::shoot(){
+/*
+void Sapheer::shoot(){
     //if (!( d-a or s-w )) // if no direction is available
         //return;
 
@@ -95,9 +97,16 @@ void Rubie::shoot(){
                 break;
         }
     }
+}*/
+
+void Sapheer::throwShield(){
+    if ( cooldown )
+        return;
+    shieldTimer = 1;
+    cooldown = 30;
 }
 
-void Rubie::input( const sf::Event & event )
+void Sapheer::input( const sf::Event & event )
 {
     if ( event.type == sf::Event::LostFocus ){
         w = a = s = d = false;
@@ -117,7 +126,7 @@ void Rubie::input( const sf::Event & event )
                 s = true;
                 break;
             case sf::Keyboard::G :{
-                shoot();
+                throwShield();
                 break;
             }
             default:
@@ -144,23 +153,23 @@ void Rubie::input( const sf::Event & event )
     }
 }
 
-bool Rubie::isDead()
+bool Sapheer::isDead()
 {
     return false;
 }
 
 
-void Rubie::move()
+void Sapheer::move()
 {
 
 }
 
-void Rubie::attack()
+void Sapheer::attack()
 {
 
 }
 
-void Rubie::ultimate()
+void Sapheer::ultimate()
 {
 
 }

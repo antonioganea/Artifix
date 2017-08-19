@@ -2,12 +2,12 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="Artifix" />
+		<Option title="CrystalDM" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/Artifix" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/CrystalDM" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -22,7 +22,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/Artifix" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/CrystalDM" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -52,6 +52,7 @@
 		<Unit filename="include/Entities/Particle.h" />
 		<Unit filename="include/Entities/Rubie.h" />
 		<Unit filename="include/Entities/RubieLaser.h" />
+		<Unit filename="include/Entities/Sapheer.h" />
 		<Unit filename="include/Registry/GameRegistry.h" />
 		<Unit filename="include/Stage/GameState.h" />
 		<Unit filename="include/Stage/Stage.h" />
@@ -64,6 +65,7 @@
 		<Unit filename="src/Entities/Particle.cpp" />
 		<Unit filename="src/Entities/Rubie.cpp" />
 		<Unit filename="src/Entities/RubieLaser.cpp" />
+		<Unit filename="src/Entities/Sapheer.cpp" />
 		<Unit filename="src/Main.cpp" />
 		<Unit filename="src/Registry/GameRegistry.cpp" />
 		<Unit filename="src/Stage/GameState.cpp" />

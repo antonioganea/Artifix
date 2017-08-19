@@ -11,7 +11,7 @@ class EmeraldoShard : public Entity
     public:
         EmeraldoShard();
         EmeraldoShard( const sf::Vector2f & position, const sf::Vector2f & velocity );
-        virtual ~EmeraldoShard();
+        //virtual ~EmeraldoShard();
 
         void reset( const sf::Vector2f & position, const sf::Vector2f & velocity );
 
@@ -22,17 +22,17 @@ class EmeraldoShard : public Entity
 
         bool isDead();
 
-        sf::RectangleShape * shape;
-        sf::Vector2f position;
-        sf::Vector2f velocity;
-        int lifetime;
-        bool chasing;
-
-        float rotationalSpeed;
-
         EmeraldoShard * target;
+        sf::Vector2f position;
     protected:
     private:
+        sf::RectangleShape * shape;
+
+        sf::Vector2f velocity;
+
+        int lifetime;
+        bool chasing;
+        float rotationalSpeed;
 };
 
 #endif // EMERALDOSHARD_H

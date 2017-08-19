@@ -38,12 +38,12 @@ void EmeraldoShard::reset( const sf::Vector2f & _position, const sf::Vector2f & 
     chasing = false;
     rotationalSpeed = rand()%10+30;if ( rand()%2 ) rotationalSpeed*=-1;
 }
-
+/*
 EmeraldoShard::~EmeraldoShard()
 {
     //dtor
 }
-
+*/
 void EmeraldoShard::draw(){
 
     shape->setRotation( rotationalSpeed + shape->getRotation() );

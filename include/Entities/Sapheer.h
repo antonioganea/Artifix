@@ -1,14 +1,14 @@
-#ifndef RUBIE_H
-#define RUBIE_H
+#ifndef SAPHEER_H
+#define SAPHEER_H
 
 #include "Crystal.h"
 #include "RubieLaser.h"
 #include <SFML/Graphics/Sprite.hpp>
 
-class Rubie : public Crystal{
+class Sapheer : public Crystal{
     public:
-        Rubie();
-        //virtual ~Rubie();
+        Sapheer();
+        //virtual ~Sapheer();
         void draw();
         void update( float dt );
 
@@ -23,18 +23,12 @@ class Rubie : public Crystal{
         void ultimate();
     protected:
     private:
-        const static float acceleration;
-        const static float friction;
-        const static int abilityCooldown;
-
-        void shoot();
-        RubieLaser * lasers;
+        void throwShield();
         sf::Sprite sprite;
+        sf::RectangleShape * shield;
         sf::Vector2f velocity;
         int w,a,s,d;
-        int cooldown;
-        int animationTimer;
-
+        int cooldown, animationTimer, shieldTimer;
 };
 
-#endif // RUBIE_H
+#endif // SAPHEER_H
