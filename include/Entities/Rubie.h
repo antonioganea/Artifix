@@ -4,6 +4,7 @@
 #include "Crystal.h"
 #include "RubieLaser.h"
 #include <SFML/Graphics/Sprite.hpp>
+#include "Particle.h"
 
 class Rubie : public Crystal{
     public:
@@ -27,8 +28,12 @@ class Rubie : public Crystal{
         const static float friction;
         const static int abilityCooldown;
 
-        void shoot();
         RubieLaser * lasers;
+        void jetAway();
+
+        Particle * shootParticles;
+        void shoot();
+
         sf::Sprite sprite;
         sf::Vector2f velocity;
         int w,a,s,d;

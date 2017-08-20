@@ -423,3 +423,164 @@
 	"RubieLaser.h"
 	<SFML/Graphics/Sprite.hpp>
 
+1503182202 source:c:\users\zenibryum\workspace\crystaldm\src\display\display.cpp
+	"Display.h"
+	<SFML/Graphics.hpp>
+	"Config.h"
+
+1503182202 c:\users\zenibryum\workspace\crystaldm\include\display\display.h
+	<SFML/Graphics/RenderWindow.hpp>
+
+1503182202 c:\users\zenibryum\workspace\crystaldm\include\\config.h
+
+1503189321 source:c:\users\zenibryum\workspace\crystaldm\src\entities\emeraldo.cpp
+	"Emeraldo.h"
+	"GameRegistry.h"
+	"Display.h"
+	"Mechanics.h"
+	"EmeraldoShard.h"
+	"StageManager.h"
+	"math.h"
+	<stdlib.h>
+	<iostream>
+
+1503185708 c:\users\zenibryum\workspace\crystaldm\include\entities\emeraldo.h
+	"Crystal.h"
+	<SFML/Graphics/Sprite.hpp>
+	"EmeraldoShard.h"
+	"Particle.h"
+
+1503182202 c:\users\zenibryum\workspace\crystaldm\include\entities\crystal.h
+	"Entity.h"
+	<SFML/Window/Event.hpp>
+
+1503182202 c:\users\zenibryum\workspace\crystaldm\include\entities\entity.h
+	<SFML/Window/Event.hpp>
+
+1503182202 c:\users\zenibryum\workspace\crystaldm\include\entities\emeraldoshard.h
+	"Entity.h"
+	<SFML/Graphics/RectangleShape.hpp>
+
+1503182202 c:\users\zenibryum\workspace\crystaldm\include\registry\gameregistry.h
+	<map>
+	<stack>
+	<memory>
+	<SFML/Graphics/Texture.hpp>
+	<SFML/Graphics/Text.hpp>
+	<SFML/Audio/SoundBuffer.hpp>
+
+1503182202 c:\users\zenibryum\workspace\crystaldm\include\utility\mechanics.h
+	<SFML/System/Vector2.hpp>
+
+1503182202 c:\users\zenibryum\workspace\crystaldm\include\stage\stagemanager.h
+	"Stage.h"
+
+1503182202 c:\users\zenibryum\workspace\crystaldm\include\stage\stage.h
+	"Entity.h"
+
+1503182202 source:c:\users\zenibryum\workspace\crystaldm\src\entities\emeraldoshard.cpp
+	"EmeraldoShard.h"
+	"GameRegistry.h"
+	"Display.h"
+	"Mechanics.h"
+	"Emeraldo.h"
+	<stdlib.h>
+
+1503189947 source:c:\users\zenibryum\workspace\crystaldm\src\entities\particle.cpp
+	"Particle.h"
+	"GameRegistry.h"
+	"Display.h"
+	"Mechanics.h"
+
+1503188989 c:\users\zenibryum\workspace\crystaldm\include\entities\particle.h
+	"Entity.h"
+	<SFML/Graphics/RectangleShape.hpp>
+
+1503189925 source:c:\users\zenibryum\workspace\crystaldm\src\entities\rubie.cpp
+	"Rubie.h"
+	"GameRegistry.h"
+	"Display.h"
+	"Mechanics.h"
+	"StageManager.h"
+	"math.h"
+	<stdlib.h>
+	<iostream>
+
+1503189683 c:\users\zenibryum\workspace\crystaldm\include\entities\rubie.h
+	"Crystal.h"
+	"RubieLaser.h"
+	<SFML/Graphics/Sprite.hpp>
+	"Particle.h"
+
+1503182202 c:\users\zenibryum\workspace\crystaldm\include\entities\rubielaser.h
+	"Entity.h"
+	<SFML/Graphics/RectangleShape.hpp>
+
+1503182323 source:c:\users\zenibryum\workspace\crystaldm\src\entities\rubielaser.cpp
+	"RubieLaser.h"
+	"GameRegistry.h"
+	"Display.h"
+	"Mechanics.h"
+	"Rubie.h"
+	<stdlib.h>
+	<math.h>
+
+1503189897 source:c:\users\zenibryum\workspace\crystaldm\src\entities\sapheer.cpp
+	"Sapheer.h"
+	"GameRegistry.h"
+	"Display.h"
+	"Mechanics.h"
+	"StageManager.h"
+	"math.h"
+	<stdlib.h>
+	<iostream>
+
+1503189700 c:\users\zenibryum\workspace\crystaldm\include\entities\sapheer.h
+	"Crystal.h"
+	"RubieLaser.h"
+	<SFML/Graphics/Sprite.hpp>
+	"Particle.h"
+
+1503190241 source:c:\users\zenibryum\workspace\crystaldm\src\main.cpp
+	<SFML/Graphics.hpp>
+	"Display.h"
+	"GameRegistry.h"
+	"StageManager.h"
+	"Emeraldo.h"
+	"Rubie.h"
+	"Sapheer.h"
+	"Particle.h"
+	<time.h>
+	<stdlib.h>
+
+1503182202 source:c:\users\zenibryum\workspace\crystaldm\src\registry\gameregistry.cpp
+	"GameRegistry.h"
+	<string>
+	<iostream>
+
+1503182202 source:c:\users\zenibryum\workspace\crystaldm\src\stage\gamestate.cpp
+	"GameState.h"
+	<iostream>
+
+1503182202 c:\users\zenibryum\workspace\crystaldm\include\stage\gamestate.h
+	<vector>
+	"Stage.h"
+
+1503182202 source:c:\users\zenibryum\workspace\crystaldm\src\stage\stage.cpp
+	"Stage.h"
+
+1503182202 source:c:\users\zenibryum\workspace\crystaldm\src\stage\stagemanager.cpp
+	"StageManager.h"
+	"GameState.h"
+	<iostream>
+
+1503182202 source:c:\users\zenibryum\workspace\crystaldm\src\utility\geometry.cpp
+	"Geometry.h"
+	<math.h>
+
+1503182202 c:\users\zenibryum\workspace\crystaldm\include\utility\geometry.h
+
+1503182202 source:c:\users\zenibryum\workspace\crystaldm\src\utility\mechanics.cpp
+	"Mechanics.h"
+	<cmath>
+

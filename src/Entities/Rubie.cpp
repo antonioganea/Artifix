@@ -25,6 +25,11 @@ Rubie::Rubie(){
     sprite.setScale(2.f,2.f);
     sprite.setOrigin(8.f,8.f);
     sprite.setTextureRect(sf::IntRect(sf::Vector2i(0,0),sf::Vector2i(16,16)));
+
+    texture = GameRegistry::getResource("shard_rubie.png",ResourceType::Texture).texture;
+    shootParticles = new Particle[16];
+    for ( int i = 0; i < 16; i++ ) shootParticles[i].setTexture(texture);
+
     velocity.x = velocity.y = 0;
     w = a = s = d = false;
     cooldown = 0;
@@ -35,6 +40,9 @@ Rubie::Rubie(){
 
 void Rubie::draw()
 {
+    for ( int i = 0; i < 16; i++ )
+        if ( !shootParticles[i].isDead() )
+            shootParticles[i].draw();
     for ( int i = 0; i < MAX_LASERS; i++ ){
         if ( !lasers[i].isDead() ){
             lasers[i].draw();
@@ -48,8 +56,10 @@ sf::Vector2f Rubie::getPosition()
     return sprite.getPosition();
 }
 
-void Rubie::update(float dt)
-{
+void Rubie::update(float dt){
+    for ( int i = 0; i < 16; i++ )
+        shootParticles[i].update(dt);
+
     for ( int i = 0; i < MAX_LASERS; i++ ){
         if ( !lasers[i].isDead() ){
             lasers[i].update( dt );
@@ -72,7 +82,7 @@ void Rubie::update(float dt)
     if (cooldown) cooldown--;
 }
 
-void Rubie::shoot(){
+void Rubie::jetAway(){
     //if (!( d-a or s-w )) // if no direction is available
         //return;
 
@@ -97,6 +107,17 @@ void Rubie::shoot(){
     }
 }
 
+void Rubie::shoot(){
+    if ( Mechanics::getSpeed(velocity) < 2.f )
+        return;
+    for ( int i = 0; i < 16; i++ ){
+        if ( shootParticles[i].isDead() ){
+            shootParticles[i].reset(sprite.getPosition(),velocity*15.f,30);
+            break;
+        }
+    }
+}
+
 void Rubie::input( const sf::Event & event )
 {
     if ( event.type == sf::Event::LostFocus ){
@@ -116,10 +137,12 @@ void Rubie::input( const sf::Event & event )
             case sf::Keyboard::S :
                 s = true;
                 break;
-            case sf::Keyboard::G :{
+            case sf::Keyboard::G :
+                jetAway();
+                break;
+            case sf::Keyboard::F :
                 shoot();
                 break;
-            }
             default:
                 break;
         }

@@ -4,6 +4,7 @@
 #include "Crystal.h"
 #include <SFML/Graphics/Sprite.hpp>
 #include "EmeraldoShard.h"
+#include "Particle.h"
 
 class Emeraldo : public Crystal{
     public:
@@ -21,7 +22,6 @@ class Emeraldo : public Crystal{
         void move();
         void attack();
         void ultimate();
-
     protected:
     private:
         const static float acceleration;
@@ -33,6 +33,9 @@ class Emeraldo : public Crystal{
 
         EmeraldoShard * dispersionParticles;
         void disperse();
+
+        Particle * shootParticles;
+        void shoot();
 
         int w,a,s,d;
         sf::Vector2f velocity;

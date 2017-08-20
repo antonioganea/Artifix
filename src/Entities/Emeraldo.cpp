@@ -29,6 +29,10 @@ Emeraldo::Emeraldo(){
     for ( int i = 0; i < 8; i++ ) dispersionParticles[i].target = dispersionParticles;
     inDispersion = false;
 
+    texture = GameRegistry::getResource("shard_emeraldo.png",ResourceType::Texture).texture;
+    shootParticles = new Particle[16];
+    for ( int i = 0; i < 16; i++ ) shootParticles[i].setTexture(texture);
+
     w = a = s = d = false;
     visible = true;
 
@@ -38,8 +42,10 @@ Emeraldo::Emeraldo(){
     dispersionParticleNo = 0;
 }
 
-void Emeraldo::draw()
-{
+void Emeraldo::draw(){
+    for ( int i = 0; i < 16; i++ )
+        if ( !shootParticles[i].isDead() )
+            shootParticles[i].draw();
     if( inDispersion )
         for ( int i = 0; i < 8; i++ )
             dispersionParticles[i].draw();
@@ -51,10 +57,12 @@ sf::Vector2f Emeraldo::getPosition(){
     return sprite.getPosition();
 }
 
-void Emeraldo::update(float dt)
-{
+void Emeraldo::update(float dt){
     for ( int i = 0; i < 8; i++ )
         dispersionParticles[i].update(dt);
+
+    for ( int i = 0; i < 16; i++ )
+        shootParticles[i].update(dt);
 
     int count = 0;
     for ( int i = 0; i < 8; i++ )
@@ -105,6 +113,17 @@ void Emeraldo::disperse(){
     }
 }
 
+void Emeraldo::shoot(){
+    if ( Mechanics::getSpeed(velocity) < 2.f )
+        return;
+    for ( int i = 0; i < 16; i++ ){
+        if ( shootParticles[i].isDead() ){
+            shootParticles[i].reset(sprite.getPosition(),velocity*15.f,30);
+            break;
+        }
+    }
+}
+
 void Emeraldo::input( const sf::Event & event )
 {
     if ( event.type == sf::Event::LostFocus ){
@@ -124,10 +143,12 @@ void Emeraldo::input( const sf::Event & event )
             case sf::Keyboard::S :
                 s = true;
                 break;
-            case sf::Keyboard::G :{
+            case sf::Keyboard::G :
                 disperse();
                 break;
-            }
+            case sf::Keyboard::F :
+                shoot();
+                break;
             default:
                 break;
         }

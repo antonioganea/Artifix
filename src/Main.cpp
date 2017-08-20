@@ -17,11 +17,13 @@ int main()
     srand(time(NULL));
 
     GameRegistry::queueResource("emeraldo.png",ResourceType::Texture);
+    GameRegistry::queueResource("shard_emeraldo.png",ResourceType::Texture);
     GameRegistry::queueResource("shard.png",ResourceType::Texture);
-    //GameRegistry::queueResource("food.png",ResourceType::Texture);
     GameRegistry::queueResource("rubie.png",ResourceType::Texture);
+    GameRegistry::queueResource("shard_rubie.png",ResourceType::Texture);
     GameRegistry::queueResource("laser.png",ResourceType::Texture);
     GameRegistry::queueResource("sapheer.png",ResourceType::Texture);
+    GameRegistry::queueResource("shard_sapheer.png",ResourceType::Texture);
     GameRegistry::queueResource("walls.png",ResourceType::Texture);
     while (!GameRegistry::loadResource()){}
 
@@ -32,8 +34,8 @@ int main()
     Stage * stage = StageManager::getStage();
 
     //Emeraldo * champion = new Emeraldo();
-    //Rubie * champion = new Rubie();
-    Sapheer * champion = new Sapheer();
+    Rubie * champion = new Rubie();
+    //Sapheer * champion = new Sapheer();
 
     stage->addEntity(champion);
 

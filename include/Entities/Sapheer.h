@@ -4,6 +4,7 @@
 #include "Crystal.h"
 #include "RubieLaser.h"
 #include <SFML/Graphics/Sprite.hpp>
+#include "Particle.h"
 
 class Sapheer : public Crystal{
     public:
@@ -23,9 +24,18 @@ class Sapheer : public Crystal{
         void ultimate();
     protected:
     private:
-        void throwShield();
+        const static float acceleration;
+        const static float friction;
+        //const static int abilityCooldown;
+
         sf::Sprite sprite;
+
         sf::RectangleShape * shield;
+        void throwShield();
+
+        Particle * shootParticles;
+        void shoot();
+
         sf::Vector2f velocity;
         int w,a,s,d;
         int cooldown, animationTimer, shieldTimer;

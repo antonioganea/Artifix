@@ -13,6 +13,10 @@
 
 #include <iostream>
 
+const float Sapheer::acceleration = 0.3f;
+const float Sapheer::friction = 0.1f;
+//const int Sapheer::abilityCooldown = 60;
+
 Sapheer::Sapheer(){
     sf::Texture * texture = GameRegistry::getResource("sapheer.png",ResourceType::Texture).texture;
     sprite.setTexture( *texture, false );
@@ -27,6 +31,10 @@ Sapheer::Sapheer(){
     shield->setOrigin(128.f,128.f);
     shield->setScale(2.f,2.f);
 
+    texture = GameRegistry::getResource("shard_sapheer.png",ResourceType::Texture).texture;
+    shootParticles = new Particle[16];
+    for ( int i = 0; i < 16; i++ ) shootParticles[i].setTexture(texture);
+
     velocity.x = velocity.y = 0;
     w = a = s = d = false;
     cooldown = 0;
@@ -35,6 +43,10 @@ Sapheer::Sapheer(){
 }
 
 void Sapheer::draw(){
+    for ( int i = 0; i < 16; i++ )
+        if ( !shootParticles[i].isDead() )
+            shootParticles[i].draw();
+
     if ( shieldTimer != 20 )
         Display::window->draw(*shield);
 
@@ -45,11 +57,10 @@ sf::Vector2f Sapheer::getPosition(){
     return sprite.getPosition();
 }
 
-const float acceleration = 0.3f;
-const float friction = 0.1f;
+void Sapheer::update(float dt){
+    for ( int i = 0; i < 16; i++ )
+        shootParticles[i].update(dt);
 
-void Sapheer::update(float dt)
-{
     if ( Mechanics::getSpeed(velocity) < 5.0f ){
         Mechanics::applyAcceleration(velocity,d-a,s-w,acceleration);
         Mechanics::applyMaxSpeed(velocity,5.0f);
@@ -73,31 +84,17 @@ void Sapheer::update(float dt)
 
     if (cooldown) cooldown--;
 }
-/*
+
 void Sapheer::shoot(){
-    //if (!( d-a or s-w )) // if no direction is available
-        //return;
-
-    if ( Mechanics::getSpeed(velocity) < 1.f )
+    if ( Mechanics::getSpeed(velocity) < 2.f )
         return;
-
-    float angle = atan2( velocity.y, velocity.x );
-
-    velocity.x = cos(angle)*30.f;
-    velocity.y = sin(angle)*30.f;
-
-    float count = 0;
-    for ( int i = 0; i < MAX_LASERS; i++ ){
-        if ( lasers[i].isDead() ){
-            float x = cos ( count*M_PI/14.f - M_PI*5.f/4.f + angle );
-            float y = sin ( count*M_PI/14.f - M_PI*5.f/4.f + angle );
-            lasers[i].reset(sprite.getPosition(),sf::Vector2f(x,y)*30.f);
-            count++;
-            if ( count == 8 )
-                break;
+    for ( int i = 0; i < 16; i++ ){
+        if ( shootParticles[i].isDead() ){
+            shootParticles[i].reset(sprite.getPosition(),velocity*15.f,30);
+            break;
         }
     }
-}*/
+}
 
 void Sapheer::throwShield(){
     if ( cooldown )
@@ -125,10 +122,12 @@ void Sapheer::input( const sf::Event & event )
             case sf::Keyboard::S :
                 s = true;
                 break;
-            case sf::Keyboard::G :{
+            case sf::Keyboard::G :
                 throwShield();
                 break;
-            }
+            case sf::Keyboard::F :
+                shoot();
+                break;
             default:
                 break;
         }
