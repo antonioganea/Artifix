@@ -52,3 +52,20 @@ void Particle::update(float dt){
 bool Particle::isDead(){
     return !lifetime;
 }
+
+bool Particle::checkCollision( Crystal * crystal ){
+    if ( !crystal->isCollidable() )
+        return false;
+
+    sf::Vector2f target = crystal->getPosition();
+
+    float dist = sqrt(
+    (target.x - position.x)*(target.x - position.x) +
+    (target.y - position.y)*(target.y - position.y) );
+
+    //Radius = 12.f
+
+    if ( crystal->getRadius() + 12.f >= dist )
+        return true;
+    return false;
+}

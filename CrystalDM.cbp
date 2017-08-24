@@ -19,6 +19,8 @@
 					<Add directory="include/Stage" />
 					<Add directory="include/Entities" />
 					<Add directory="include/" />
+					<Add directory="include" />
+					<Add directory="include/Networking" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -34,6 +36,8 @@
 					<Add directory="include/Stage" />
 					<Add directory="include/Entities" />
 					<Add directory="include/" />
+					<Add directory="include" />
+					<Add directory="include/Networking" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -53,6 +57,7 @@
 		<Unit filename="include/Entities/Rubie.h" />
 		<Unit filename="include/Entities/RubieLaser.h" />
 		<Unit filename="include/Entities/Sapheer.h" />
+		<Unit filename="include/Networking/SyncManager.h" />
 		<Unit filename="include/Registry/GameRegistry.h" />
 		<Unit filename="include/Stage/GameState.h" />
 		<Unit filename="include/Stage/Stage.h" />
@@ -67,6 +72,7 @@
 		<Unit filename="src/Entities/RubieLaser.cpp" />
 		<Unit filename="src/Entities/Sapheer.cpp" />
 		<Unit filename="src/Main.cpp" />
+		<Unit filename="src/Networking/SyncManager.cpp" />
 		<Unit filename="src/Registry/GameRegistry.cpp" />
 		<Unit filename="src/Stage/GameState.cpp" />
 		<Unit filename="src/Stage/Stage.cpp" />
@@ -76,6 +82,7 @@
 		<Extensions>
 			<code_completion />
 			<debugger />
+			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

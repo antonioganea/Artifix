@@ -5,15 +5,16 @@
 
 #include "Mechanics.h"
 #include "StageManager.h"
+#include "SyncManager.h"
 
 #define _USE_MATH_DEFINES
 #include "math.h"
 
 #include <stdlib.h>
-
+#include <string.h>
 #include <iostream>
 
-#define MAX_LASERS 16
+#define MAX_LASERS 8
 
 const float Rubie::acceleration = 0.3f;
 const float Rubie::friction = 0.1f;
@@ -34,6 +35,10 @@ Rubie::Rubie(){
     w = a = s = d = false;
     cooldown = 0;
     animationTimer = 0;
+    syncable = false;
+    dead = false;
+
+    syncer = -1;
 
     lasers = new RubieLaser[MAX_LASERS];
 }
@@ -80,22 +85,58 @@ void Rubie::update(float dt){
     sprite.move(velocity.x,velocity.y);
 
     if (cooldown) cooldown--;
+
+    if ( syncable )
+        SyncManager::sendPosition(sprite.getPosition());
+
+    for ( int laser = 0; laser < MAX_LASERS; laser++ ){
+        if ( !lasers[laser].isDead() ){
+            for ( int player = 0; player < MAX_PLAYERS; player++ ){
+                if ( SyncManager::players[player] && player != getSyncer() ){
+                    if ( lasers[laser].checkCollision( SyncManager::crystals[player] )){
+                        std::cout << "Collision on player no." << player << " laser no. " << laser << std::endl;
+                        lasers[laser].dead = true;
+                        if ( syncable )
+                            SyncManager::sendLaserCollision(player);
+                    }
+                }
+            }
+        }
+    }
+
+    for ( int particle = 0; particle < 16; particle++ ){
+        if ( !shootParticles[particle].isDead() ){
+            for ( int player = 0; player < MAX_PLAYERS; player++ ){
+                if ( SyncManager::players[player] && player != getSyncer() ){
+                    if ( shootParticles[particle].checkCollision( SyncManager::crystals[player] )){
+                        std::cout << "Basic attack on player no." << player << std::endl;
+                        shootParticles[particle].lifetime = 0;
+                        if ( syncable )
+                            SyncManager::sendParticleCollision(player);
+                    }
+                }
+            }
+        }
+    }
 }
 
 void Rubie::jetAway(){
-    //if (!( d-a or s-w )) // if no direction is available
-        //return;
-
     if ( Mechanics::getSpeed(velocity) < 1.f )
+        return;
+    if ( !cooldown )
+        cooldown = abilityCooldown;
+    else
         return;
 
     float angle = atan2( velocity.y, velocity.x );
+    SyncManager::sendUltimate(angle);
 
     velocity.x = cos(angle)*30.f;
     velocity.y = sin(angle)*30.f;
 
-    float count = 0;
-    for ( int i = 0; i < MAX_LASERS; i++ ){
+    int count = 0;
+    for ( int i = 0; i < MAX_PLAYERS; i++ ){
+        //std::cout << lasers[i].isDead() << ' ';
         if ( lasers[i].isDead() ){
             float x = cos ( count*M_PI/14.f - M_PI*5.f/4.f + angle );
             float y = sin ( count*M_PI/14.f - M_PI*5.f/4.f + angle );
@@ -105,6 +146,7 @@ void Rubie::jetAway(){
                 break;
         }
     }
+    //std::cout << " SPEWED COUNT : " << count << std::endl;
 }
 
 void Rubie::shoot(){
@@ -113,6 +155,7 @@ void Rubie::shoot(){
     for ( int i = 0; i < 16; i++ ){
         if ( shootParticles[i].isDead() ){
             shootParticles[i].reset(sprite.getPosition(),velocity*15.f,30);
+            SyncManager::sendShoot(velocity);
             break;
         }
     }
@@ -167,9 +210,13 @@ void Rubie::input( const sf::Event & event )
     }
 }
 
+void Rubie::setPosition(const sf::Vector2f& position){
+    sprite.setPosition(position);
+}
+
 bool Rubie::isDead()
 {
-    return false;
+    return dead;
 }
 
 
@@ -178,12 +225,66 @@ void Rubie::move()
 
 }
 
-void Rubie::attack()
-{
-
+void Rubie::attack(){
+    sf::Vector2f _velocity;
+    memcpy(&_velocity.x,SyncManager::options,4);
+    memcpy(&_velocity.y,SyncManager::options+4,4);
+    //std::cout << "SHOOT :" << _velocity.x << " " << _velocity.y << std::endl;
+    for ( int i = 0; i < 16; i++ ){
+        if ( shootParticles[i].isDead() ){
+            shootParticles[i].reset(sprite.getPosition(),_velocity*15.f,30);
+            break;
+        }
+    }
 }
 
-void Rubie::ultimate()
-{
+void Rubie::ultimate(){
+    //if (!( d-a or s-w )) // if no direction is available
+        //return;
 
+    //if ( Mechanics::getSpeed(velocity) < 1.f )
+        //return;
+    float angle = ((float*)SyncManager::options)[0];
+
+    velocity.x = cos(angle)*30.f;
+    velocity.y = sin(angle)*30.f;
+
+    float count = 0;
+    for ( int i = 0; i < MAX_LASERS; i++ ){
+        if ( lasers[i].isDead() ){
+            float x = cos ( count*M_PI/14.f - M_PI*5.f/4.f + angle );
+            float y = sin ( count*M_PI/14.f - M_PI*5.f/4.f + angle );
+            lasers[i].reset(sprite.getPosition(),sf::Vector2f(x,y)*30.f);
+            count++;
+            if ( count == 8 )
+                break;
+        }
+    }
+}
+
+void Rubie::setSyncable( bool _syncable ){
+    syncable = _syncable;
+}
+
+float Rubie::getRadius(){
+    return 16.f;
+}
+
+bool Rubie::isCollidable(){
+    return true;
+}
+
+void Rubie::markDead(){
+    dead = true;
+}
+
+void Rubie::setSyncer( int _syncer ){
+    syncer = _syncer;
+}
+int Rubie::getSyncer(){
+    return syncer;
+}
+
+void Rubie::pushCrystal(const sf::Vector2f& _velocity){
+    velocity = _velocity;
 }

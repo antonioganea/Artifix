@@ -3,12 +3,15 @@
 
 #include "Entity.h"
 #include <SFML/Graphics/RectangleShape.hpp>
+#include "Crystal.h"
 
 class Rubie;
 
 class RubieLaser : public Entity
 {
     public:
+        static const float laserLength;
+
         RubieLaser();
         RubieLaser( const sf::Vector2f & position, const sf::Vector2f & velocity );
         virtual ~RubieLaser();
@@ -19,16 +22,16 @@ class RubieLaser : public Entity
         void update( float dt );
 
         bool isDead();
+        bool dead;
 
         sf::RectangleShape * shape;
         sf::Vector2f position;
         sf::Vector2f velocity;
         int lifetime;
 
-
+        bool checkCollision( Crystal * crystal );
     protected:
     private:
-        float rotationalSpeed;
         int animationTimer;
 };
 

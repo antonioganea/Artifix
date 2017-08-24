@@ -5,12 +5,13 @@
 
 #include "Mechanics.h"
 #include "StageManager.h"
+#include "SyncManager.h"
 
 #define _USE_MATH_DEFINES
 #include "math.h"
 
 #include <stdlib.h>
-
+#include <string.h>
 #include <iostream>
 
 const float Sapheer::acceleration = 0.3f;
@@ -40,6 +41,10 @@ Sapheer::Sapheer(){
     cooldown = 0;
     animationTimer = 0;
     shieldTimer = 20;
+    syncable = false;
+    dead = false;
+
+    syncer = -1;
 }
 
 void Sapheer::draw(){
@@ -83,6 +88,45 @@ void Sapheer::update(float dt){
     shield->setPosition(sprite.getPosition());
 
     if (cooldown) cooldown--;
+
+    if ( syncable )
+        SyncManager::sendPosition(sprite.getPosition());
+
+
+    sf::Vector2f position;
+    position = sprite.getPosition();
+
+    if ( shieldTimer != 20 ){
+        for ( int player = 0; player < MAX_PLAYERS; player++ ){
+            if ( SyncManager::players[player] && player != getSyncer() ){
+                sf::Vector2f target = SyncManager::crystals[player]->getPosition();
+                float dist = sqrt(
+                (target.x-position.x)*(target.x-position.x)+
+                (target.y-position.y)*(target.y-position.y)
+                );
+                if ( dist <= ((shieldTimer/5)+1)*64 ){
+                    std::cout << "Shield Collision on player no. 2" << player << std::endl;
+                    if ( syncable )
+                        SyncManager::sendShieldCollision(player);
+                }
+            }
+        }
+    }
+
+    for ( int particle = 0; particle < 16; particle++ ){
+        if ( !shootParticles[particle].isDead() ){
+            for ( int player = 0; player < MAX_PLAYERS; player++ ){
+                if ( SyncManager::players[player] && player != getSyncer() ){
+                    if ( shootParticles[particle].checkCollision( SyncManager::crystals[player] )){
+                        std::cout << "Basic attack on player no." << player << std::endl;
+                        shootParticles[particle].lifetime = 0;
+                        if ( syncable )
+                            SyncManager::sendParticleCollision(player);
+                    }
+                }
+            }
+        }
+    }
 }
 
 void Sapheer::shoot(){
@@ -91,6 +135,7 @@ void Sapheer::shoot(){
     for ( int i = 0; i < 16; i++ ){
         if ( shootParticles[i].isDead() ){
             shootParticles[i].reset(sprite.getPosition(),velocity*15.f,30);
+            SyncManager::sendShoot(velocity);
             break;
         }
     }
@@ -101,6 +146,7 @@ void Sapheer::throwShield(){
         return;
     shieldTimer = 1;
     cooldown = 30;
+    SyncManager::sendUltimate();
 }
 
 void Sapheer::input( const sf::Event & event )
@@ -152,9 +198,13 @@ void Sapheer::input( const sf::Event & event )
     }
 }
 
+void Sapheer::setPosition(const sf::Vector2f& position){
+    sprite.setPosition(position);
+}
+
 bool Sapheer::isDead()
 {
-    return false;
+    return dead;
 }
 
 
@@ -163,12 +213,53 @@ void Sapheer::move()
 
 }
 
-void Sapheer::attack()
-{
+//TODO : for attack() and ultimate() port voids shoot() and throwShield() to boolean-returning functions
+// true for successful, false for aborted action. For true returns, sync with server.
 
+void Sapheer::attack(){
+    sf::Vector2f _velocity;
+    memcpy(&_velocity.x,SyncManager::options,4);
+    memcpy(&_velocity.y,SyncManager::options+4,4);
+    //std::cout << "SHOOT :" << _velocity.x << " " << _velocity.y << std::endl;
+    for ( int i = 0; i < 16; i++ ){
+        if ( shootParticles[i].isDead() ){
+            shootParticles[i].reset(sprite.getPosition(),_velocity*15.f,30);
+            break;
+        }
+    }
 }
 
-void Sapheer::ultimate()
-{
+void Sapheer::ultimate(){
+    if ( cooldown )
+        return;
+    shieldTimer = 1;
+    cooldown = 30;
+}
 
+void Sapheer::setSyncable( bool _syncable ){
+    syncable = _syncable;
+}
+
+float Sapheer::getRadius(){
+    return 16.f;
+}
+
+bool Sapheer::isCollidable(){
+    return true;
+}
+
+void Sapheer::markDead(){
+    dead = true;
+}
+
+void Sapheer::setSyncer( int _syncer ){
+    syncer = _syncer;
+}
+
+int Sapheer::getSyncer(){
+    return syncer;
+}
+
+void Sapheer::pushCrystal(const sf::Vector2f& _velocity){
+    velocity = _velocity;
 }

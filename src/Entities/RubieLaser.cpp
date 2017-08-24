@@ -10,6 +10,12 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
+#include "SyncManager.h"
+
+#include <iostream>
+
+const float RubieLaser::laserLength = 60.f;
+
 RubieLaser::RubieLaser(){
     sf::Texture * texture = GameRegistry::getResource("laser.png",ResourceType::Texture).texture;
     shape = new sf::RectangleShape( sf::Vector2f(30,8) );
@@ -21,6 +27,7 @@ RubieLaser::RubieLaser(){
     //rotationalSpeed = rand()%10+30;
     shape->setOrigin(15,4);
     animationTimer = 0;
+    dead = false;
 }
 
 RubieLaser::RubieLaser( const sf::Vector2f & _position, const sf::Vector2f & _velocity ){
@@ -37,6 +44,7 @@ void RubieLaser::reset( const sf::Vector2f & _position, const sf::Vector2f & _ve
     lifetime=30;
     shape->setPosition(position);
     animationTimer = 0;
+    dead = false;
 
     float angle = atan2( velocity.y, velocity.x );
     shape->setRotation(angle*180.f/M_PI);
@@ -51,8 +59,7 @@ RubieLaser::~RubieLaser()
 }
 
 void RubieLaser::draw(){
-    shape->setRotation( rotationalSpeed + shape->getRotation() );
-
+    //shape->setRotation( rotationalSpeed + shape->getRotation() );
     Display::window->draw(*shape);
 }
 
@@ -74,5 +81,40 @@ void RubieLaser::update(float dt)
 
 bool RubieLaser::isDead()
 {
-    return Mechanics::getSpeed(velocity) < 5.f;
+    return dead | (Mechanics::getSpeed(velocity) < 5.f);
+}
+
+bool RubieLaser::checkCollision( Crystal * crystal ){
+    if ( !crystal->isCollidable() )
+        return false;
+
+    sf::Vector2f D; // direction vector
+
+    float angle = atan2( velocity.y, velocity.x );
+    D.x = cos ( angle );
+    D.y = sin ( angle );
+
+    sf::Vector2f C = crystal->getPosition();
+
+    sf::Vector2f A = shape->getPosition();
+    A -= D*30.f;
+
+    float t = D.x * ( C.x - A.x ) + D.y * ( C.y - A.y );
+
+    sf::Vector2f E;
+
+    E.x = t*D.x+A.x;
+    E.y = t*D.y+A.y;
+
+    if ( sqrt( (E.x-A.x)*(E.x-A.x)+(E.y-A.y)*(E.y-A.y) ) > laserLength/2.f )
+        return false;
+
+    float LEC = sqrt( (E.x-C.x)*(E.x-C.x)+(E.y-C.y)*(E.y-C.y) );
+
+    if ( LEC < crystal->getRadius() ){
+        //std::cout << "CIOC" << std::endl;
+        //dead = true;
+        return true;
+    }
+    return false;
 }

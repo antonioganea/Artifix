@@ -9,6 +9,8 @@
 	<time.h>
 	<stdlib.h>
 
+1503182202 
+
 1502457875 source:/home/zenibryum/workspace/Artifix/src/Registry/GameRegistry.cpp
 	"GameRegistry.h"
 	<string>
@@ -21,6 +23,8 @@
 	<SFML/Graphics/Texture.hpp>
 	<SFML/Graphics/Text.hpp>
 	<SFML/Audio/SoundBuffer.hpp>
+
+1503182202 o/SoundBuffer.hpp>
 
 1502458408 source:/home/zenibryum/workspace/Artifix/src/Utility/Geometry.cpp
 	"Geometry.h"
@@ -36,6 +40,8 @@
 1502458501 /home/zenibryum/workspace/Artifix/include/Display/Display.h
 	<SFML/Graphics/RenderWindow.hpp>
 
+1503182202 hics/RenderWindow.hpp>
+
 1502477381 source:/home/zenibryum/workspace/Artifix/src/Stage/GameState.cpp
 	"GameState.h"
 	<iostream>
@@ -49,6 +55,8 @@
 
 1502475926 /home/zenibryum/workspace/Artifix/include/Entities/Entity.h
 	<SFML/Window/Event.hpp>
+
+1503182202 ow/Event.hpp>
 
 1502454363 source:/home/zenibryum/workspace/Artifix/src/Stage/Stage.cpp
 	"Stage.h"
@@ -65,6 +73,8 @@
 
 1502459667 source:/home/zenibryum/workspace/Artifix/src/Champion.cpp
 	"Champion.h"
+
+1503189700 h"
 
 1502460725 /home/zenibryum/workspace/Artifix/include/Champion.h
 	"Entity.h"
@@ -85,6 +95,8 @@
 	<SFML/Graphics/Sprite.hpp>
 	"EmeraldoShard.h"
 
+1503061151 hard.h"
+
 1502477089 /home/zenibryum/workspace/Artifix/include/Entities/Champion.h
 	"Entity.h"
 	<SFML/Window/Event.hpp>
@@ -93,8 +105,12 @@
 	"Mechanics.h"
 	<cmath>
 
+1503182202 .h"
+
 1502540342 /home/zenibryum/workspace/Artifix/include/Utility/Mechanics.h
 	<SFML/System/Vector2.hpp>
+
+1503182202 em/Vector2.hpp>
 
 1502458558 /home/zenibryum/workspace/Artifix/include//Config.h
 
@@ -108,6 +124,8 @@
 1502536479 /home/zenibryum/workspace/Artifix/include/Entities/Particle.h
 	"Entity.h"
 	<SFML/Graphics/RectangleShape.hpp>
+
+1503182202 hics/RectangleShape.hpp>
 
 1502611850 source:/home/zenibryum/workspace/Artifix/src/Entities/EmeraldoShard.cpp
 	"EmeraldoShard.h"
@@ -250,6 +268,8 @@
 	"Crystal.h"
 	"RubieLaser.h"
 	<SFML/Graphics/Sprite.hpp>
+
+1503152128 hics/Sprite.hpp>
 
 1502995210 source:/home/zenibryum/workspace/CrystalMD/src/Entities/RubieLaser.cpp
 	"RubieLaser.h"
@@ -583,4 +603,362 @@
 1503182202 source:c:\users\zenibryum\workspace\crystaldm\src\utility\mechanics.cpp
 	"Mechanics.h"
 	<cmath>
+
+1503182202 source:c:\users\zenibryum\workspace\crystaldm project\crystaldm client\src\display\display.cpp
+	"Display.h"
+	<SFML/Graphics.hpp>
+	"Config.h"
+
+1503182202 c:\users\zenibryum\workspace\crystaldm project\crystaldm client\include\display\display.h
+	<SFML/Graphics/RenderWindow.hpp>
+
+1503182202 c:\users\zenibryum\workspace\crystaldm project\crystaldm client\include\\config.h
+
+1503233405 source:c:\users\zenibryum\workspace\crystaldm project\crystaldm client\src\entities\emeraldo.cpp
+	"Emeraldo.h"
+	"GameRegistry.h"
+	"Display.h"
+	"Mechanics.h"
+	"EmeraldoShard.h"
+	"StageManager.h"
+	"SyncManager.h"
+	"math.h"
+	<stdlib.h>
+	<iostream>
+
+1503185708 c:\users\zenibryum\workspace\crystaldm project\crystaldm client\include\entities\emeraldo.h
+	"Crystal.h"
+	<SFML/Graphics/Sprite.hpp>
+	"EmeraldoShard.h"
+	"Particle.h"
+
+1503182202 c:\users\zenibryum\workspace\crystaldm project\crystaldm client\include\entities\crystal.h
+	"Entity.h"
+	<SFML/Window/Event.hpp>
+
+1503182202 c:\users\zenibryum\workspace\crystaldm project\crystaldm client\include\entities\entity.h
+	<SFML/Window/Event.hpp>
+
+1503182202 c:\users\zenibryum\workspace\crystaldm project\crystaldm client\include\entities\emeraldoshard.h
+	"Entity.h"
+	<SFML/Graphics/RectangleShape.hpp>
+
+1503188989 c:\users\zenibryum\workspace\crystaldm project\crystaldm client\include\entities\particle.h
+	"Entity.h"
+	<SFML/Graphics/RectangleShape.hpp>
+
+1503182202 c:\users\zenibryum\workspace\crystaldm project\crystaldm client\include\registry\gameregistry.h
+	<map>
+	<stack>
+	<memory>
+	<SFML/Graphics/Texture.hpp>
+	<SFML/Graphics/Text.hpp>
+	<SFML/Audio/SoundBuffer.hpp>
+
+1503182202 c:\users\zenibryum\workspace\crystaldm project\crystaldm client\include\utility\mechanics.h
+	<SFML/System/Vector2.hpp>
+
+1503182202 c:\users\zenibryum\workspace\crystaldm project\crystaldm client\include\stage\stagemanager.h
+	"Stage.h"
+
+1503182202 c:\users\zenibryum\workspace\crystaldm project\crystaldm client\include\stage\stage.h
+	"Entity.h"
+
+1503182202 source:c:\users\zenibryum\workspace\crystaldm project\crystaldm client\src\entities\emeraldoshard.cpp
+	"EmeraldoShard.h"
+	"GameRegistry.h"
+	"Display.h"
+	"Mechanics.h"
+	"Emeraldo.h"
+	<stdlib.h>
+
+1503189947 source:c:\users\zenibryum\workspace\crystaldm project\crystaldm client\src\entities\particle.cpp
+	"Particle.h"
+	"GameRegistry.h"
+	"Display.h"
+	"Mechanics.h"
+
+1503189925 source:c:\users\zenibryum\workspace\crystaldm project\crystaldm client\src\entities\rubie.cpp
+	"Rubie.h"
+	"GameRegistry.h"
+	"Display.h"
+	"Mechanics.h"
+	"StageManager.h"
+	"math.h"
+	<stdlib.h>
+	<iostream>
+
+1503189683 c:\users\zenibryum\workspace\crystaldm project\crystaldm client\include\entities\rubie.h
+	"Crystal.h"
+	"RubieLaser.h"
+	<SFML/Graphics/Sprite.hpp>
+	"Particle.h"
+
+1503182202 c:\users\zenibryum\workspace\crystaldm project\crystaldm client\include\entities\rubielaser.h
+	"Entity.h"
+	<SFML/Graphics/RectangleShape.hpp>
+
+1503182323 source:c:\users\zenibryum\workspace\crystaldm project\crystaldm client\src\entities\rubielaser.cpp
+	"RubieLaser.h"
+	"GameRegistry.h"
+	"Display.h"
+	"Mechanics.h"
+	"Rubie.h"
+	<stdlib.h>
+	<math.h>
+
+1503189897 source:c:\users\zenibryum\workspace\crystaldm project\crystaldm client\src\entities\sapheer.cpp
+	"Sapheer.h"
+	"GameRegistry.h"
+	"Display.h"
+	"Mechanics.h"
+	"StageManager.h"
+	"math.h"
+	<stdlib.h>
+	<iostream>
+
+1503189700 c:\users\zenibryum\workspace\crystaldm project\crystaldm client\include\entities\sapheer.h
+	"Crystal.h"
+	"RubieLaser.h"
+	<SFML/Graphics/Sprite.hpp>
+	"Particle.h"
+
+1503182202 source:c:\users\zenibryum\workspace\crystaldm project\crystaldm client\src\registry\gameregistry.cpp
+	"GameRegistry.h"
+	<string>
+	<iostream>
+
+1503182202 source:c:\users\zenibryum\workspace\crystaldm project\crystaldm client\src\stage\gamestate.cpp
+	"GameState.h"
+	<iostream>
+
+1503182202 c:\users\zenibryum\workspace\crystaldm project\crystaldm client\include\stage\gamestate.h
+	<vector>
+	"Stage.h"
+
+1503182202 source:c:\users\zenibryum\workspace\crystaldm project\crystaldm client\src\stage\stage.cpp
+	"Stage.h"
+
+1503182202 source:c:\users\zenibryum\workspace\crystaldm project\crystaldm client\src\stage\stagemanager.cpp
+	"StageManager.h"
+	"GameState.h"
+	<iostream>
+
+1503182202 source:c:\users\zenibryum\workspace\crystaldm project\crystaldm client\src\utility\geometry.cpp
+	"Geometry.h"
+	<math.h>
+
+1503182202 c:\users\zenibryum\workspace\crystaldm project\crystaldm client\include\utility\geometry.h
+
+1503182202 source:c:\users\zenibryum\workspace\crystaldm project\crystaldm client\src\utility\mechanics.cpp
+	"Mechanics.h"
+	<cmath>
+
+1503233169 source:c:\users\zenibryum\workspace\crystaldm project\crystaldm client\src\main.cpp
+	<SFML/Graphics.hpp>
+	"Display.h"
+	"GameRegistry.h"
+	"StageManager.h"
+	"SyncManager.h"
+	"Emeraldo.h"
+	"Rubie.h"
+	"Sapheer.h"
+	"Particle.h"
+	<time.h>
+	<stdlib.h>
+
+1503233431 source:c:\users\zenibryum\workspace\crystaldm project\crystaldm client\src\networking\syncmanager.cpp
+	"SyncManager.h"
+	<string>
+	<iostream>
+
+1503232951 c:\users\zenibryum\workspace\crystaldm project\crystaldm client\include\networking\syncmanager.h
+	<SFML/Network.hpp>
+
+1503232951 ork.hpp>
+
+1503584049 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Display/Display.cpp
+	"Display.h"
+	<SFML/Graphics.hpp>
+	"Config.h"
+
+1503303261 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Display/Display.h
+	<SFML/Graphics/RenderWindow.hpp>
+
+1503584080 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include//Config.h
+
+1503580298 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Entities/Emeraldo.cpp
+	"Emeraldo.h"
+	"GameRegistry.h"
+	"Display.h"
+	"Mechanics.h"
+	"EmeraldoShard.h"
+	"StageManager.h"
+	"SyncManager.h"
+	"math.h"
+	<stdlib.h>
+	<iostream>
+	<string.h>
+
+1503580254 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Entities/Emeraldo.h
+	"Crystal.h"
+	<SFML/Graphics/Sprite.hpp>
+	"EmeraldoShard.h"
+	"Particle.h"
+
+1503580344 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Entities/Crystal.h
+	"Entity.h"
+	<SFML/Window/Event.hpp>
+
+1503303261 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Entities/Entity.h
+	<SFML/Window/Event.hpp>
+
+1503303261 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Entities/EmeraldoShard.h
+	"Entity.h"
+	<SFML/Graphics/RectangleShape.hpp>
+
+1503509250 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Entities/Particle.h
+	"Entity.h"
+	<SFML/Graphics/RectangleShape.hpp>
+	"Crystal.h"
+
+1503303261 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Registry/GameRegistry.h
+	<map>
+	<stack>
+	<memory>
+	<SFML/Graphics/Texture.hpp>
+	<SFML/Graphics/Text.hpp>
+	<SFML/Audio/SoundBuffer.hpp>
+
+1503303261 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Utility/Mechanics.h
+	<SFML/System/Vector2.hpp>
+
+1503303261 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Stage/StageManager.h
+	"Stage.h"
+
+1503303261 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Stage/Stage.h
+	"Entity.h"
+
+1503572878 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Networking/SyncManager.h
+	<SFML/Network.hpp>
+	"Crystal.h"
+
+1503303264 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Entities/EmeraldoShard.cpp
+	"EmeraldoShard.h"
+	"GameRegistry.h"
+	"Display.h"
+	"Mechanics.h"
+	"Emeraldo.h"
+	<stdlib.h>
+
+1503509978 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Entities/Particle.cpp
+	"Particle.h"
+	"GameRegistry.h"
+	"Display.h"
+	"Mechanics.h"
+
+1503580321 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Entities/Rubie.cpp
+	"Rubie.h"
+	"GameRegistry.h"
+	"Display.h"
+	"Mechanics.h"
+	"StageManager.h"
+	"SyncManager.h"
+	"math.h"
+	<stdlib.h>
+	<string.h>
+	<iostream>
+
+1503580262 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Entities/Rubie.h
+	"Crystal.h"
+	"RubieLaser.h"
+	<SFML/Graphics/Sprite.hpp>
+	"Particle.h"
+
+1503490514 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Entities/RubieLaser.h
+	"Entity.h"
+	<SFML/Graphics/RectangleShape.hpp>
+	"Crystal.h"
+
+1503493098 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Entities/RubieLaser.cpp
+	"RubieLaser.h"
+	"GameRegistry.h"
+	"Display.h"
+	"Mechanics.h"
+	"Rubie.h"
+	<stdlib.h>
+	<math.h>
+	"SyncManager.h"
+	<iostream>
+
+1503580703 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Entities/Sapheer.cpp
+	"Sapheer.h"
+	"GameRegistry.h"
+	"Display.h"
+	"Mechanics.h"
+	"StageManager.h"
+	"SyncManager.h"
+	"math.h"
+	<stdlib.h>
+	<string.h>
+	<iostream>
+
+1503580266 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Entities/Sapheer.h
+	"Crystal.h"
+	"RubieLaser.h"
+	<SFML/Graphics/Sprite.hpp>
+	"Particle.h"
+
+1503584031 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Main.cpp
+	<SFML/Graphics.hpp>
+	"Display.h"
+	"GameRegistry.h"
+	"StageManager.h"
+	"SyncManager.h"
+	"Emeraldo.h"
+	"Rubie.h"
+	"Sapheer.h"
+	"Particle.h"
+	<time.h>
+	<stdlib.h>
+
+1503303264 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Registry/GameRegistry.cpp
+	"GameRegistry.h"
+	<string>
+	<iostream>
+
+1503502928 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Stage/GameState.cpp
+	"GameState.h"
+	<iostream>
+
+1503303261 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Stage/GameState.h
+	<vector>
+	"Stage.h"
+
+1503303264 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Stage/Stage.cpp
+	"Stage.h"
+
+1503303264 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Stage/StageManager.cpp
+	"StageManager.h"
+	"GameState.h"
+	<iostream>
+
+1503303264 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Utility/Geometry.cpp
+	"Geometry.h"
+	<math.h>
+
+1503303261 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Utility/Geometry.h
+
+1503303264 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Utility/Mechanics.cpp
+	"Mechanics.h"
+	<cmath>
+
+1503583558 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Networking/SyncManager.cpp
+	"SyncManager.h"
+	"StageManager.h"
+	"Emeraldo.h"
+	"Rubie.h"
+	"Sapheer.h"
+	<string.h>
+	<iostream>
 

@@ -45,12 +45,12 @@ void GameState::update(float dt)
     {
         (*it)->update(dt);
         if ( (*it)->isDead() ){
+            std::cout<<"ERASED ENTITY"<<std::endl;
             delete (*it);
             it = m_entities.erase(it);
         }
         else
             ++it;
-
     }
 /*
     for(it2 = uc.begin(); it2 != uc.end();)

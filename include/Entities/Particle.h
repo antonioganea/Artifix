@@ -3,6 +3,7 @@
 
 #include "Entity.h"
 #include <SFML/Graphics/RectangleShape.hpp>
+#include "Crystal.h"
 
 class Particle : public Entity
 {
@@ -15,6 +16,8 @@ class Particle : public Entity
 
         void draw();
         void update( float dt );
+
+        bool checkCollision( Crystal * crystal );
 
         void setTexture ( const sf::Texture * texture );
 

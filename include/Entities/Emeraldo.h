@@ -14,14 +14,35 @@ class Emeraldo : public Crystal{
         void update( float dt );
 
         bool isDead();
+        bool dead;
 
         void input( const sf::Event & event );
 
         sf::Vector2f getPosition();
+        void setPosition ( const sf::Vector2f& position );
+
+        void setSyncable( bool syncable );
 
         void move();
         void attack();
         void ultimate();
+
+        void pushCrystal( const sf::Vector2f& velocity );
+
+        void disperse();
+        int w,a,s,d;
+
+        bool syncable;
+
+        float getRadius();
+        bool isCollidable();
+
+        void markDead();
+
+        void setSyncer( int syncer );
+        int getSyncer();
+
+        int syncer;
     protected:
     private:
         const static float acceleration;
@@ -32,12 +53,11 @@ class Emeraldo : public Crystal{
         sf::Sprite sprite;
 
         EmeraldoShard * dispersionParticles;
-        void disperse();
+
 
         Particle * shootParticles;
         void shoot();
 
-        int w,a,s,d;
         sf::Vector2f velocity;
 
         bool inDispersion, visible;
