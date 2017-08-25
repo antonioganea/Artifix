@@ -33,6 +33,8 @@ class SyncManager
 
         static sf::TcpSocket socket;
 
+        static void input( sf::Event event );
+
         static char * packageBuffer;
     protected:
 

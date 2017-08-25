@@ -14,7 +14,6 @@ Crystal * SyncManager::crystals[MAX_PLAYERS];
 char * SyncManager::options;
 bool SyncManager::players[MAX_PLAYERS];
 int SyncManager::myPlayerID;
-Crystal * SyncManager::myCrystal;
 
 //char debugBuffer[] = { 2, 1, 1, 2, 2, 127, 1,0,0, 127, 1,0,0 };
 
@@ -24,6 +23,7 @@ void SyncManager::init(){
     for ( int i = 0; i < MAX_PLAYERS; i++ )
         SyncManager::players[i] = false;
     std::cout << "SyncManager Initialized!" << std::endl;
+    SyncManager::myPlayerID = -1;
 
     //DEBUG:
     //memcpy(SyncManager::packageBuffer,debugBuffer,13);
@@ -39,7 +39,7 @@ void SyncManager::connectToServer( const sf::IpAddress& address ){
         std::cout << "Failed to connect to server!" << std::endl;
     //SyncManager::socket.setBlocking(false);
 
-    SyncManager::sendCrystalType( 3 );
+    //SyncManager::sendCrystalType( 2 );
 }
 
 
@@ -148,13 +148,12 @@ void SyncManager::parseBuffer( std::size_t received ){
             case 1:{ // Crystal Type
                 std::cout << "Type 1 - crystal type" << std::endl;
                 cursor++;
-                Stage * stage = StageManager::getStage();
                 SyncManager::players[player] = true;
                 switch( *cursor ){ // Crystal Type Number
                     case 1:{
                         Emeraldo * emeraldo = new Emeraldo();
                         emeraldo->setSyncer(player);
-                        stage->addEntity( emeraldo );
+                        StageManager::gameState->addEntity( emeraldo );
                         SyncManager::crystals[player] = emeraldo;
                         std::cout << "CREATED EMERALDO" << std::endl;
                         break;
@@ -162,7 +161,7 @@ void SyncManager::parseBuffer( std::size_t received ){
                     case 2:{
                         Rubie * rubie = new Rubie();
                         rubie->setSyncer(player);
-                        stage->addEntity( rubie );
+                        StageManager::gameState->addEntity( rubie );
                         SyncManager::crystals[player] = rubie;
                         std::cout << "CREATED RUBIE" << std::endl;
                         break;
@@ -170,12 +169,16 @@ void SyncManager::parseBuffer( std::size_t received ){
                     case 3:{
                         Sapheer * sapheer = new Sapheer();
                         sapheer->setSyncer(player);
-                        stage->addEntity( sapheer );
+                        StageManager::gameState->addEntity( sapheer );
                         SyncManager::crystals[player] = sapheer;
                         std::cout << "CREATED SAPHEER" << std::endl;
                         break;
                     }
                 }
+                if ( player == SyncManager::myPlayerID ){
+                    SyncManager::crystals[player]->setSyncable(true);
+                }
+                    //SyncManager::crystals[player]->setSyncer(SyncManager::myPlayerID);
                 cursor++;
                 break;
             }
@@ -246,9 +249,9 @@ void SyncManager::parseBuffer( std::size_t received ){
             case 12:{
                 std::cout << "Type 12 - Received player ID" << std::endl;
                 cursor++;
-                SyncManager::crystals[player] = myCrystal;
+                //SyncManager::crystals[player] = myCrystal;
                 SyncManager::myPlayerID = player;
-                SyncManager::crystals[player]->setSyncer(SyncManager::myPlayerID);
+                //SyncManager::crystals[player]->setSyncer(SyncManager::myPlayerID);
                 SyncManager::players[player] = true;
                 break;
             }
@@ -278,6 +281,12 @@ void SyncManager::parseBuffer( std::size_t received ){
 }
 //**************************************************************************************
 
+
+void SyncManager::input( sf::Event event ){
+    if ( SyncManager::myPlayerID != -1 ){
+        SyncManager::crystals[SyncManager::myPlayerID]->input(event);
+    }
+}
 
 /*
 void SyncManager::damageCrystal( int player ){

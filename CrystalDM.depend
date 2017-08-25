@@ -777,15 +777,17 @@
 
 1503232951 ork.hpp>
 
-1503584049 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Display/Display.cpp
+1503610372 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Display/Display.cpp
 	"Display.h"
 	<SFML/Graphics.hpp>
 	"Config.h"
 
-1503303261 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Display/Display.h
+1503601192 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Display/Display.h
 	<SFML/Graphics/RenderWindow.hpp>
+	<SFML/Graphics/View.hpp>
+	"Crystal.h"
 
-1503584080 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include//Config.h
+1503600590 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include//Config.h
 
 1503580298 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Entities/Emeraldo.cpp
 	"Emeraldo.h"
@@ -822,7 +824,7 @@
 	<SFML/Graphics/RectangleShape.hpp>
 	"Crystal.h"
 
-1503303261 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Registry/GameRegistry.h
+1503594753 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Registry/GameRegistry.h
 	<map>
 	<stack>
 	<memory>
@@ -833,13 +835,19 @@
 1503303261 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Utility/Mechanics.h
 	<SFML/System/Vector2.hpp>
 
-1503303261 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Stage/StageManager.h
+1503647928 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Stage/StageManager.h
 	"Stage.h"
+	"GameState.h"
+	"MainMenu.h"
+	"CreditsMenu.h"
+	"ConnectMenu.h"
+	"PickMenu.h"
+	<stack>
 
 1503303261 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Stage/Stage.h
 	"Entity.h"
 
-1503572878 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Networking/SyncManager.h
+1503651399 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Networking/SyncManager.h
 	<SFML/Network.hpp>
 	"Crystal.h"
 
@@ -909,12 +917,13 @@
 	<SFML/Graphics/Sprite.hpp>
 	"Particle.h"
 
-1503584031 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Main.cpp
+1503653680 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Main.cpp
 	<SFML/Graphics.hpp>
 	"Display.h"
 	"GameRegistry.h"
 	"StageManager.h"
 	"SyncManager.h"
+	"Config.h"
 	"Emeraldo.h"
 	"Rubie.h"
 	"Sapheer.h"
@@ -922,25 +931,31 @@
 	<time.h>
 	<stdlib.h>
 
-1503303264 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Registry/GameRegistry.cpp
+1503648899 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Registry/GameRegistry.cpp
 	"GameRegistry.h"
 	<string>
 	<iostream>
 
-1503502928 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Stage/GameState.cpp
+1503654264 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Stage/GameState.cpp
 	"GameState.h"
 	<iostream>
+	"SyncManager.h"
+	"GameRegistry.h"
+	"Display.h"
 
-1503303261 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Stage/GameState.h
+1503593914 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Stage/GameState.h
 	<vector>
 	"Stage.h"
+	<SFML/Graphics/RectangleShape.hpp>
+	<SFML/Graphics/CircleShape.hpp>
 
 1503303264 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Stage/Stage.cpp
 	"Stage.h"
 
-1503303264 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Stage/StageManager.cpp
+1503651701 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Stage/StageManager.cpp
 	"StageManager.h"
 	"GameState.h"
+	"Display.h"
 	<iostream>
 
 1503303264 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Utility/Geometry.cpp
@@ -953,7 +968,7 @@
 	"Mechanics.h"
 	<cmath>
 
-1503583558 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Networking/SyncManager.cpp
+1503653661 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Networking/SyncManager.cpp
 	"SyncManager.h"
 	"StageManager.h"
 	"Emeraldo.h"
@@ -961,4 +976,104 @@
 	"Sapheer.h"
 	<string.h>
 	<iostream>
+
+1503653360 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Gui/GuiButton.cpp
+	"GuiButton.h"
+	"Display.h"
+	"GameRegistry.h"
+	<iostream>
+	"StageManager.h"
+	"SyncManager.h"
+
+1503599693 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Gui/GuiButton.h
+	<SFML/Graphics/RectangleShape.hpp>
+	<SFML/Window/Event.hpp>
+
+1503606416 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Stage/MainMenu.cpp
+	"MainMenu.h"
+	<iostream>
+	"GameRegistry.h"
+	"Display.h"
+	"GuiButton.h"
+	"Config.h"
+
+1503602524 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Stage/MainMenu.h
+	<vector>
+	"Stage.h"
+	<SFML/Graphics/RectangleShape.hpp>
+	<SFML/Graphics/CircleShape.hpp>
+	"GuiButton.h"
+
+1503595616 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Gui/GuiElement.h
+
+1503602426 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Gui/GuiLabel.cpp
+	"GuiLabel.h"
+	"Display.h"
+	<SFML/Graphics/Texture.hpp>
+
+1503602304 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Gui/GuiLabel.h
+	<SFML/Graphics/RectangleShape.hpp>
+	<SFML/Window/Event.hpp>
+
+1503604903 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Stage/CreditsMenu.h
+	<vector>
+	"Stage.h"
+	<SFML/Graphics/RectangleShape.hpp>
+	<SFML/Graphics/CircleShape.hpp>
+	"GuiButton.h"
+	"GuiLabel.h"
+
+1503608627 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Stage/CreditsMenu.cpp
+	"CreditsMenu.h"
+	<iostream>
+	"GameRegistry.h"
+	"Display.h"
+	"GuiButton.h"
+	"Config.h"
+
+1503645355 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Gui/GuiEditField.cpp
+	"GuiEditField.h"
+	"Display.h"
+	"GameRegistry.h"
+	<iostream>
+	"StageManager.h"
+	<string.h>
+
+1503645329 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Gui/GuiEditField.h
+	<SFML/Graphics/RectangleShape.hpp>
+	<SFML/Graphics/Text.hpp>
+	<SFML/Window/Event.hpp>
+	<string>
+
+1503645276 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Stage/ConnectMenu.h
+	<vector>
+	"Stage.h"
+	<SFML/Graphics/RectangleShape.hpp>
+	<SFML/Graphics/CircleShape.hpp>
+	"GuiButton.h"
+	"GuiLabel.h"
+	"GuiEditField.h"
+
+1503646525 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Stage/ConnectMenu.cpp
+	"ConnectMenu.h"
+	<iostream>
+	"GameRegistry.h"
+	"Display.h"
+	"GuiButton.h"
+	"Config.h"
+
+1503648012 /home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/include/Stage/PickMenu.h
+	<vector>
+	"Stage.h"
+	<SFML/Graphics/RectangleShape.hpp>
+	<SFML/Graphics/CircleShape.hpp>
+	"GuiButton.h"
+
+1503649332 source:/home/zenibryum/workspace/BOOP/CrystalDM Project/CrystalDM Client/src/Stage/PickMenu.cpp
+	"PickMenu.h"
+	<iostream>
+	"GameRegistry.h"
+	"Display.h"
+	"GuiButton.h"
+	"Config.h"
 

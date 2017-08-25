@@ -21,6 +21,7 @@
 					<Add directory="include/" />
 					<Add directory="include" />
 					<Add directory="include/Networking" />
+					<Add directory="include/Gui" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -38,6 +39,7 @@
 					<Add directory="include/" />
 					<Add directory="include" />
 					<Add directory="include/Networking" />
+					<Add directory="include/Gui" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -57,9 +59,17 @@
 		<Unit filename="include/Entities/Rubie.h" />
 		<Unit filename="include/Entities/RubieLaser.h" />
 		<Unit filename="include/Entities/Sapheer.h" />
+		<Unit filename="include/Gui/GuiButton.h" />
+		<Unit filename="include/Gui/GuiEditField.h" />
+		<Unit filename="include/Gui/GuiElement.h" />
+		<Unit filename="include/Gui/GuiLabel.h" />
 		<Unit filename="include/Networking/SyncManager.h" />
 		<Unit filename="include/Registry/GameRegistry.h" />
+		<Unit filename="include/Stage/ConnectMenu.h" />
+		<Unit filename="include/Stage/CreditsMenu.h" />
 		<Unit filename="include/Stage/GameState.h" />
+		<Unit filename="include/Stage/MainMenu.h" />
+		<Unit filename="include/Stage/PickMenu.h" />
 		<Unit filename="include/Stage/Stage.h" />
 		<Unit filename="include/Stage/StageManager.h" />
 		<Unit filename="include/Utility/Geometry.h" />
@@ -71,10 +81,17 @@
 		<Unit filename="src/Entities/Rubie.cpp" />
 		<Unit filename="src/Entities/RubieLaser.cpp" />
 		<Unit filename="src/Entities/Sapheer.cpp" />
+		<Unit filename="src/Gui/GuiButton.cpp" />
+		<Unit filename="src/Gui/GuiEditField.cpp" />
+		<Unit filename="src/Gui/GuiLabel.cpp" />
 		<Unit filename="src/Main.cpp" />
 		<Unit filename="src/Networking/SyncManager.cpp" />
 		<Unit filename="src/Registry/GameRegistry.cpp" />
+		<Unit filename="src/Stage/ConnectMenu.cpp" />
+		<Unit filename="src/Stage/CreditsMenu.cpp" />
 		<Unit filename="src/Stage/GameState.cpp" />
+		<Unit filename="src/Stage/MainMenu.cpp" />
+		<Unit filename="src/Stage/PickMenu.cpp" />
 		<Unit filename="src/Stage/Stage.cpp" />
 		<Unit filename="src/Stage/StageManager.cpp" />
 		<Unit filename="src/Utility/Geometry.cpp" />

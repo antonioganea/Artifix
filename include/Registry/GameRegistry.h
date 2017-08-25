@@ -30,6 +30,7 @@ struct ResourceCommand
 class GameRegistry
 {
     public:
+        static void init();
         static bool queueResource( const std::string& filePath, const ResourceType& type );
         static bool loadResource();
         static ResourcePtr getResource( const std::string& filePath, const ResourceType& type );

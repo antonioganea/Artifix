@@ -6,6 +6,33 @@
 std::map<std::string, ResourcePtr> GameRegistry::m_resources;
 std::stack<ResourceCommand> GameRegistry::m_commands;
 
+void GameRegistry::init(){
+    GameRegistry::queueResource("emeraldo.png",ResourceType::Texture);
+    GameRegistry::queueResource("shard_emeraldo.png",ResourceType::Texture);
+    GameRegistry::queueResource("shard.png",ResourceType::Texture);
+    GameRegistry::queueResource("rubie.png",ResourceType::Texture);
+    GameRegistry::queueResource("shard_rubie.png",ResourceType::Texture);
+    GameRegistry::queueResource("laser.png",ResourceType::Texture);
+    GameRegistry::queueResource("sapheer.png",ResourceType::Texture);
+    GameRegistry::queueResource("shard_sapheer.png",ResourceType::Texture);
+    GameRegistry::queueResource("walls.png",ResourceType::Texture);
+    GameRegistry::queueResource("icepattern.png",ResourceType::Texture);
+    GameRegistry::queueResource("playbtn-sheet.png",ResourceType::Texture);
+    GameRegistry::queueResource("optionsbtn-sheet.png",ResourceType::Texture);
+    GameRegistry::queueResource("creditsbtn-sheet.png",ResourceType::Texture);
+    GameRegistry::queueResource("exitbtn-sheet.png",ResourceType::Texture);
+    GameRegistry::queueResource("backbtn-sheet.png",ResourceType::Texture);
+    GameRegistry::queueResource("picktxt.png", ResourceType::Texture);
+    GameRegistry::queueResource("arena.png", ResourceType::Texture);
+    GameRegistry::queueResource("dpcomic.ttf",ResourceType::Font);
+    GameRegistry::queueResource("connectbtn-sheet.png", ResourceType::Texture);
+    GameRegistry::queueResource("readybtn-sheet.png", ResourceType::Texture);
+    GameRegistry::queueResource("emeraldo-pick.png", ResourceType::Texture);
+    GameRegistry::queueResource("rubie-pick.png", ResourceType::Texture);
+    GameRegistry::queueResource("sapheer-pick.png", ResourceType::Texture);
+    while (!GameRegistry::loadResource()){}
+}
+
 bool GameRegistry::queueResource( const std::string& filePath, const ResourceType& type  )
 {
     ResourceCommand command;
@@ -22,7 +49,7 @@ std::string composeFullPath( const std::string& filePath, const ResourceType& ty
         fullPath = "data/textures/" + filePath;
         break;
     case ResourceType::Font:
-        fullPath = "data/font/" + filePath;
+        fullPath = "data/fonts/" + filePath;
         break;
     case ResourceType::SoundBuffer:
         fullPath = "data/sounds/" + filePath;

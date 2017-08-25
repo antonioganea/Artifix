@@ -1,5 +1,5 @@
-#ifndef GAMESTATE_H
-#define GAMESTATE_H
+#ifndef MAINMENU_H
+#define MAINMENU_H
 
 #include <vector>
 
@@ -7,24 +7,24 @@
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/CircleShape.hpp>
 
-class GameState : public Stage
+#include "GuiButton.h"
+
+class MainMenu : public Stage
 {
     public:
-        GameState();
-        virtual ~GameState();
+        MainMenu();
+        virtual ~MainMenu();
 
         void addEntity(Entity * entity);
         void update( float dt );
         void input( const sf::Event & event );
         void draw();
-        sf::CircleShape circle;
-        sf::RectangleShape arena;
 
+        sf::RectangleShape arena;
     protected:
 
     private:
-        std::vector<Entity*> m_entities;
-        std::vector<Entity*> ps_entities;
+        std::vector<GuiButton*> m_buttons;
 };
 
-#endif // GAMESTATE_H
+#endif // MAINMENU_H
