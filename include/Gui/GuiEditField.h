@@ -11,13 +11,11 @@ class GuiEditField
 {
     public:
         GuiEditField( std::string defaultString, int x, int y, int w, int h );
-        //virtual ~GuiButton();
         void highlight( bool hightlightOn );
         void setPosition( float x, float y );
         void setPosition( sf::Vector2f position );
         void setString( std::string str );
         char * getString();
-        //void action();
         void checkType( sf::Event::KeyEvent keyEvent );
         bool checkClick( sf::Event::MouseButtonEvent buttonEvent );
         bool checkHover( sf::Event::MouseMoveEvent moveEvent );

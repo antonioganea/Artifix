@@ -9,13 +9,11 @@ class GuiButton
     public:
         int functionality;
         GuiButton( int functionality );
-        //virtual ~GuiButton();
         void highlight( bool hightlightOn );
         void setNext( GuiButton * button );
         void setLast( GuiButton * button );
         void setPosition( float x, float y );
         void setPosition( sf::Vector2f position );
-        //void action();
         bool checkClick( sf::Event::MouseButtonEvent buttonEvent );
         bool checkHover( sf::Event::MouseMoveEvent moveEvent );
         GuiButton * next = nullptr;

@@ -15,10 +15,6 @@ PickMenu * StageManager::pickMenu;
 
 std::stack<Stage*> StageManager::m_stages;
 
-/** @brief init
-  *
-  * @todo: document this function
-  */
 void StageManager::init()
 {
     StageManager::gameState = new GameState;
@@ -31,10 +27,6 @@ void StageManager::init()
     m_stages.push(currentStage);
 }
 
-/** @brief setStage
-  *
-  * @todo: document this function
-  */
 void StageManager::pushStage( Stage * stage ){
     if ( stage != m_stages.top() ){
         m_stages.push(stage);
@@ -49,24 +41,13 @@ void StageManager::popStage(){
     }
 }
 
-
-/** @brief getStage
-  *
-  * @todo: document this function
-  */
 Stage* StageManager::getStage()
 {
     return StageManager::currentStage;
 }
 
-
-/** @brief update
-  *
-  * @todo: document this function
-  */
 void StageManager::update(float dt)
 {
-    //std::cout << "MEEEEEEOWWWWW";
     StageManager::currentStage->update(dt);
 }
 
@@ -75,28 +56,16 @@ void StageManager::updateCurrentStage(){
     currentStage = m_stages.top();
 }
 
-/** @brief input
-  *
-  * @todo: document this function
-  */
 void StageManager::input( const sf::Event & event )
 {
     currentStage->input( event );
 }
 
-/** @brief draw
-  *
-  * @todo: document this function
-  */
 void StageManager::draw()
 {
     currentStage->draw();
 }
 
-/** @brief StageManager
-  *
-  * @todo: document this function
-  */
 StageManager::StageManager()
 {
 

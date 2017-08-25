@@ -17,7 +17,9 @@ void Display::init()
 }
 
 void Display::focusOn( Crystal * crystal ){
-    Display::view.setCenter(crystal->getPosition());
+    sf::Vector2f velocity = crystal->getPosition()-Display::view.getCenter();
+    velocity /= 10.f;
+    Display::view.move(velocity);
     Display::window->setView(Display::view);
 }
 

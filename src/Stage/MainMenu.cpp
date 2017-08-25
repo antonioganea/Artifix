@@ -13,16 +13,8 @@ MainMenu::MainMenu()
     std::cout << "Main Menu created!\n";
 
     sf::Texture * arenaTexture = GameRegistry::getResource("arena.png",ResourceType::Texture).texture;
-    /*
-    arena.setSize((sf::Vector2f)arenaTexture->getSize());
-    arena.setTexture(arenaTexture);
-    arena.setOrigin((sf::Vector2f)arenaTexture->getSize()/2.f);
-    arena.setScale(16.f,16.f);
-    */
     arena.setSize( sf::Vector2f(WINDOW_WIDTH,WINDOW_HEIGHT) );
     arena.setTexture(arenaTexture);
-
-    GuiButton * button;
 
     for ( int i = 0; i < 4; i++ ){
         GuiButton * button = new GuiButton(i+1);
@@ -42,10 +34,6 @@ void MainMenu::addEntity( Entity * entity ){
 void MainMenu::update(float dt){
 }
 
-/** @brief input
-  *
-  * @todo: document this function
-  */
 void MainMenu::input( const sf::Event & event ){
     for ( std::vector<GuiButton*>::iterator it = m_buttons.begin(); it != m_buttons.end(); it++ ){
         switch( event.type ){
@@ -54,6 +42,8 @@ void MainMenu::input( const sf::Event & event ){
                 break;
             case sf::Event::MouseButtonReleased:
                 (*it)->checkClick(event.mouseButton);
+                break;
+            default:
                 break;
         }
     }

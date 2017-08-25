@@ -20,11 +20,9 @@ RubieLaser::RubieLaser(){
     sf::Texture * texture = GameRegistry::getResource("laser.png",ResourceType::Texture).texture;
     shape = new sf::RectangleShape( sf::Vector2f(30,8) );
     shape->setTexture(texture,false);
-    //shape.setTextureRect(sf::IntRect(sf::Vector2i(16*(animationTimer/5),0),sf::Vector2i(16,16)));
     shape->setTextureRect(sf::IntRect(sf::Vector2i(0,0),sf::Vector2i(30,8)));
     shape->setScale(2.f,2.f);
     lifetime = 0;
-    //rotationalSpeed = rand()%10+30;
     shape->setOrigin(15,4);
     animationTimer = 0;
     dead = false;
@@ -48,9 +46,6 @@ void RubieLaser::reset( const sf::Vector2f & _position, const sf::Vector2f & _ve
 
     float angle = atan2( velocity.y, velocity.x );
     shape->setRotation(angle*180.f/M_PI);
-
-
-    //rotationalSpeed = rand()%10+30;if ( rand()%2 ) rotationalSpeed*=-1;
 }
 
 RubieLaser::~RubieLaser()
@@ -59,7 +54,6 @@ RubieLaser::~RubieLaser()
 }
 
 void RubieLaser::draw(){
-    //shape->setRotation( rotationalSpeed + shape->getRotation() );
     Display::window->draw(*shape);
 }
 
@@ -112,8 +106,6 @@ bool RubieLaser::checkCollision( Crystal * crystal ){
     float LEC = sqrt( (E.x-C.x)*(E.x-C.x)+(E.y-C.y)*(E.y-C.y) );
 
     if ( LEC < crystal->getRadius() ){
-        //std::cout << "CIOC" << std::endl;
-        //dead = true;
         return true;
     }
     return false;

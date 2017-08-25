@@ -22,19 +22,7 @@ int main(){
     Display::init();
     StageManager::init();
 
-    Stage * stage = StageManager::getStage();
-
-    //Emeraldo * champion = new Emeraldo();
-    //Rubie * champion = new Rubie();
-    //Sapheer * champion = new Sapheer();
-
-    //champion->setSyncable(true);
-    //stage->addEntity(champion);
-
-    //SyncManager::myCrystal = champion;
-
     SyncManager::init();
-    //SyncManager::connectToServer( sf::IpAddress(127,0,0,1) );
 
     sf::View view;
 
@@ -54,13 +42,10 @@ int main(){
                     Display::window->close();
             }
             StageManager::input(event);
-            //champion->input(event);
         }
 
         SyncManager::receivePackets();
         StageManager::update(10.f);
-
-        //Display::focusOn(champion);
 
         Display::window->clear();
         StageManager::draw();

@@ -9,7 +9,6 @@
 class Rubie : public Crystal{
     public:
         Rubie();
-        //virtual ~Rubie();
         void draw();
         void update( float dt );
 

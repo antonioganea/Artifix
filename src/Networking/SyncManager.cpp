@@ -15,8 +15,6 @@ char * SyncManager::options;
 bool SyncManager::players[MAX_PLAYERS];
 int SyncManager::myPlayerID;
 
-//char debugBuffer[] = { 2, 1, 1, 2, 2, 127, 1,0,0, 127, 1,0,0 };
-
 void SyncManager::init(){
     SyncManager::packageBuffer = new char[128];
     SyncManager::options = new char[128];
@@ -24,10 +22,6 @@ void SyncManager::init(){
         SyncManager::players[i] = false;
     std::cout << "SyncManager Initialized!" << std::endl;
     SyncManager::myPlayerID = -1;
-
-    //DEBUG:
-    //memcpy(SyncManager::packageBuffer,debugBuffer,13);
-    //SyncManager::parseBuffer(13);
 }
 
 void SyncManager::connectToServer( const sf::IpAddress& address ){
@@ -37,9 +31,6 @@ void SyncManager::connectToServer( const sf::IpAddress& address ){
         std::cout << "Successfully connected to server!" << std::endl;
     else
         std::cout << "Failed to connect to server!" << std::endl;
-    //SyncManager::socket.setBlocking(false);
-
-    //SyncManager::sendCrystalType( 2 );
 }
 
 
@@ -87,7 +78,6 @@ void SyncManager::sendUltimate( float options ){
 }
 
 void SyncManager::sendLaserCollision( int player ){
-    //std::cout << "Sent laser collision for player " << player << std::endl;
     SyncManager::packageBuffer[0] = 7; // package code ( laserCollision / 4 byte payload )
     memcpy(SyncManager::packageBuffer+1,&player,4);
     SyncManager::socket.send(SyncManager::packageBuffer,5);
@@ -129,12 +119,6 @@ void SyncManager::receivePackets(){
 }
 
 void SyncManager::parseBuffer( std::size_t received ){
-
-    //std::cout << "Received : " << received << " " <<
-    //((int*)SyncManager::packageBuffer)[0] << " " <<
-    //((int*)SyncManager::packageBuffer)[1] << std::endl;
-
-    //unsigned int streampos = 0;
     char * cursor = SyncManager::packageBuffer;
     int player;
 
@@ -178,13 +162,11 @@ void SyncManager::parseBuffer( std::size_t received ){
                 if ( player == SyncManager::myPlayerID ){
                     SyncManager::crystals[player]->setSyncable(true);
                 }
-                    //SyncManager::crystals[player]->setSyncer(SyncManager::myPlayerID);
                 cursor++;
                 break;
             }
             case 2:{ // Position package
                 //std::cout << "Type 2 - position type" << std::endl;
-                //std::cout << "DEBUG" << std::endl;
                 cursor++;
                 sf::Int32 x,y;
                 memcpy(&x,cursor,4);
@@ -192,9 +174,6 @@ void SyncManager::parseBuffer( std::size_t received ){
                 if ( SyncManager::players[player] )
                     SyncManager::crystals[player]->setPosition(sf::Vector2f(x,y));
                 cursor += 8;
-
-                //std::cout << "UPDATED POSITION" << std::endl;
-
                 break;
             }
             case 3:{ // Basic attack package
@@ -249,9 +228,7 @@ void SyncManager::parseBuffer( std::size_t received ){
             case 12:{
                 std::cout << "Type 12 - Received player ID" << std::endl;
                 cursor++;
-                //SyncManager::crystals[player] = myCrystal;
                 SyncManager::myPlayerID = player;
-                //SyncManager::crystals[player]->setSyncer(SyncManager::myPlayerID);
                 SyncManager::players[player] = true;
                 break;
             }
@@ -266,12 +243,6 @@ void SyncManager::parseBuffer( std::size_t received ){
                 cursor += 8;
                 break;
             }
-            /*
-                redirectionBuffer[0] = (char)player;
-                redirectionBuffer[1] =  13;// packet code ( impulse 13 )
-                memcpy(redirectionBuffer+2,&(velocity.x),4);
-                memcpy(redirectionBuffer+6,&(velocity.y),4);
-            */
             default:{
                 cursor++;
             }
@@ -287,34 +258,3 @@ void SyncManager::input( sf::Event event ){
         SyncManager::crystals[SyncManager::myPlayerID]->input(event);
     }
 }
-
-/*
-void SyncManager::damageCrystal( int player ){
-    if ( SyncManager::crystalHP[player] > 1 ){
-        SyncManager::crystalHP[player]--;
-        //Send message to clients..
-        SyncManager::packageBuffer[0] = (char)player;
-        SyncManager::packageBuffer[1] = 10; // packet code 10 hp
-        memcpy(SyncManager::packageBuffer+2,SyncManager::crystalHP+player,4);
-
-        for ( int i = 0; i < MAX_PLAYERS; i++ ){
-            if ( SyncManager::playersOn[i] ){
-                SyncManager::sockets[i].send( SyncManager::packageBuffer, 6 );
-            }
-        }
-    }
-    else{//if the hp is 0
-        //TODO
-    }
-}
-
-void SyncManager::sendDisconnected( int player ){
-    SyncManager::packageBuffer[0] = (char)player;
-    SyncManager::packageBuffer[1] = 11; // packet code 11 disconnected
-    for ( int i = 0; i < MAX_PLAYERS; i++ ){
-        if ( SyncManager::playersOn[i] ){
-            SyncManager::sockets[i].send( SyncManager::packageBuffer, 2 );
-        }
-    }
-}
-*/

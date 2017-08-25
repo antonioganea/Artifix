@@ -57,11 +57,9 @@ void GuiButton::highlight( bool hightlightOn ){
     int halfWidth = shape.getTexture()->getSize().x/2;
     int height = shape.getTexture()->getSize().y;
     if ( hightlightOn ){
-        //shape.setFillColor(sf::Color::Red);
         shape.setTextureRect(sf::IntRect(sf::Vector2i(halfWidth,0),sf::Vector2i(halfWidth,height)));
     }
     else{
-        //shape.setFillColor(sf::Color::White);
         shape.setTextureRect(sf::IntRect(sf::Vector2i(0,0),sf::Vector2i(halfWidth,height)));
     }
 }
@@ -102,7 +100,6 @@ bool GuiButton::checkClick(sf::Event::MouseButtonEvent buttonEvent){
                 break;
             case 6: // Connect
                 SyncManager::connectToServer(StageManager::connectMenu->field->getString());
-                //SyncManager::connectToServer("127.0.0.1");
                 StageManager::pushStage(StageManager::pickMenu);
                 break;
             case 7: // Ready
@@ -126,13 +123,18 @@ bool GuiButton::checkClick(sf::Event::MouseButtonEvent buttonEvent){
             default:
                 std::cout << "GUIBUTTON FUNCTIONALITY UNKNOWN " << functionality << std::endl;
         }
+        return true;
     }
+    return false;
 }
 
 bool GuiButton::checkHover(sf::Event::MouseMoveEvent moveEvent){
     highlight(false);
-    if ( shape.getGlobalBounds().contains(moveEvent.x,moveEvent.y) )
+    if ( shape.getGlobalBounds().contains(moveEvent.x,moveEvent.y) ){
         highlight(true);
+        return true;
+    }
+    return false;
 }
 
 void GuiButton::draw(){

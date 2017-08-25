@@ -9,7 +9,7 @@ Particle::Particle(){
     lifetime = 0;
 }
 
-Particle::Particle( const sf::Texture * texture ){//GameRegistry::getResource("shard.png",ResourceType::Texture).texture;
+Particle::Particle( const sf::Texture * texture ){
     Particle();
     setTexture( texture );
 }
@@ -42,7 +42,7 @@ void Particle::update(float dt){
     Mechanics::applyFriction(velocity,0.1f);
     position+=velocity;
 
-    shape->setRotation( rotationalSpeed + shape->getRotation() );//prevent overflows?
+    shape->setRotation( rotationalSpeed + shape->getRotation() );
 
     shape->setPosition(position);
     if (lifetime)
@@ -62,8 +62,6 @@ bool Particle::checkCollision( Crystal * crystal ){
     float dist = sqrt(
     (target.x - position.x)*(target.x - position.x) +
     (target.y - position.y)*(target.y - position.y) );
-
-    //Radius = 12.f
 
     if ( crystal->getRadius() + 12.f >= dist )
         return true;

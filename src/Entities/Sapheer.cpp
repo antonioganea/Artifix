@@ -16,13 +16,11 @@
 
 const float Sapheer::acceleration = 0.3f;
 const float Sapheer::friction = 0.1f;
-//const int Sapheer::abilityCooldown = 60;
 
 Sapheer::Sapheer(){
     sf::Texture * texture = GameRegistry::getResource("sapheer.png",ResourceType::Texture).texture;
     sprite.setTexture( *texture, false );
     sprite.setScale(2.f,2.f);
-    //sprite.setOrigin(8.f,8.f);
     sprite.setOrigin(8.f,8.f);
     sprite.setTextureRect(sf::IntRect(sf::Vector2i(0,0),sf::Vector2i(16,16)));
 
@@ -78,8 +76,6 @@ void Sapheer::update(float dt){
 
     if ( shieldTimer && shieldTimer < 20 )
         shieldTimer++;
-
-    //std::cout << "Timer : " << shieldTimer << std::endl;
 
     sprite.setTextureRect(sf::IntRect(sf::Vector2i(16*(animationTimer/5),0),sf::Vector2i(16,16)));
     shield->setTextureRect(sf::IntRect(sf::Vector2i(256*(shieldTimer/5),0),sf::Vector2i(256,256)));
@@ -213,14 +209,10 @@ void Sapheer::move()
 
 }
 
-//TODO : for attack() and ultimate() port voids shoot() and throwShield() to boolean-returning functions
-// true for successful, false for aborted action. For true returns, sync with server.
-
 void Sapheer::attack(){
     sf::Vector2f _velocity;
     memcpy(&_velocity.x,SyncManager::options,4);
     memcpy(&_velocity.y,SyncManager::options+4,4);
-    //std::cout << "SHOOT :" << _velocity.x << " " << _velocity.y << std::endl;
     for ( int i = 0; i < 16; i++ ){
         if ( shootParticles[i].isDead() ){
             shootParticles[i].reset(sprite.getPosition(),_velocity*15.f,30);

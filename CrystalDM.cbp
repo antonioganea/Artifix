@@ -92,7 +92,6 @@
 		<Unit filename="src/Stage/GameState.cpp" />
 		<Unit filename="src/Stage/MainMenu.cpp" />
 		<Unit filename="src/Stage/PickMenu.cpp" />
-		<Unit filename="src/Stage/Stage.cpp" />
 		<Unit filename="src/Stage/StageManager.cpp" />
 		<Unit filename="src/Utility/Geometry.cpp" />
 		<Unit filename="src/Utility/Mechanics.cpp" />

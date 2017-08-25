@@ -40,6 +40,7 @@ bool GameRegistry::queueResource( const std::string& filePath, const ResourceTyp
     command.type = type;
     m_commands.push( command );
     std::cout << "Queued resource : "<< filePath << std::endl;
+    return true;
 }
 
 std::string composeFullPath( const std::string& filePath, const ResourceType& type ){
@@ -59,28 +60,14 @@ std::string composeFullPath( const std::string& filePath, const ResourceType& ty
     return fullPath;
 }
 
-/** @brief getResource
-  *
-  * @todo: document this function
-  */
-ResourcePtr GameRegistry::getResource( const std::string& filePath, const ResourceType& type )
-{
-    //TODO:
-    //compose full path, using ResourceType
+ResourcePtr GameRegistry::getResource( const std::string& filePath, const ResourceType& type ){
     std::string fullPath = composeFullPath( filePath, type );
     std::cout << "Returning resource : "<< fullPath << std::endl;
     return m_resources.find(fullPath)->second;//use full path
 }
 
-/** @brief loadResource
-  *
-  * @todo: document this function
-  * @returns true if all resources are loaded, false if still loading
-  */
 bool GameRegistry::loadResource()
 {
-    //...
-
     if ( m_commands.size() )
     {
         ResourceType type = m_commands.top().type;

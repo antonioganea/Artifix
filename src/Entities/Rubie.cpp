@@ -136,7 +136,6 @@ void Rubie::jetAway(){
 
     int count = 0;
     for ( int i = 0; i < MAX_PLAYERS; i++ ){
-        //std::cout << lasers[i].isDead() << ' ';
         if ( lasers[i].isDead() ){
             float x = cos ( count*M_PI/14.f - M_PI*5.f/4.f + angle );
             float y = sin ( count*M_PI/14.f - M_PI*5.f/4.f + angle );
@@ -146,7 +145,6 @@ void Rubie::jetAway(){
                 break;
         }
     }
-    //std::cout << " SPEWED COUNT : " << count << std::endl;
 }
 
 void Rubie::shoot(){
@@ -229,7 +227,6 @@ void Rubie::attack(){
     sf::Vector2f _velocity;
     memcpy(&_velocity.x,SyncManager::options,4);
     memcpy(&_velocity.y,SyncManager::options+4,4);
-    //std::cout << "SHOOT :" << _velocity.x << " " << _velocity.y << std::endl;
     for ( int i = 0; i < 16; i++ ){
         if ( shootParticles[i].isDead() ){
             shootParticles[i].reset(sprite.getPosition(),_velocity*15.f,30);
@@ -239,11 +236,6 @@ void Rubie::attack(){
 }
 
 void Rubie::ultimate(){
-    //if (!( d-a or s-w )) // if no direction is available
-        //return;
-
-    //if ( Mechanics::getSpeed(velocity) < 1.f )
-        //return;
     float angle = ((float*)SyncManager::options)[0];
 
     velocity.x = cos(angle)*30.f;

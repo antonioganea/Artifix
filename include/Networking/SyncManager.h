@@ -40,11 +40,6 @@ class SyncManager
 
     private:
         SyncManager();
-
-
-
-        //static std::map<std::string, ResourcePtr> m_resources;
-        //static std::stack<ResourceCommand> m_commands;
 };
 
 #endif // SYNCMANAGER_H

@@ -11,7 +11,6 @@ class EmeraldoShard : public Entity
     public:
         EmeraldoShard();
         EmeraldoShard( const sf::Vector2f & position, const sf::Vector2f & velocity );
-        //virtual ~EmeraldoShard();
 
         void reset( const sf::Vector2f & position, const sf::Vector2f & velocity );
 

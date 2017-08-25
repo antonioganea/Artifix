@@ -9,7 +9,6 @@
 class Emeraldo : public Crystal{
     public:
         Emeraldo();
-        //virtual ~Emeraldo();
         void draw();
         void update( float dt );
 
@@ -53,7 +52,6 @@ class Emeraldo : public Crystal{
         sf::Sprite sprite;
 
         EmeraldoShard * dispersionParticles;
-
 
         Particle * shootParticles;
         void shoot();

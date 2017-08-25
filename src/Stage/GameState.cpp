@@ -6,8 +6,6 @@
 #include "GameRegistry.h"
 #include "Display.h"
 
-//std::vector<Object*> GameState::m_objects;
-
 GameState::GameState()
 {
     //allocate object containers
@@ -32,20 +30,12 @@ GameState::~GameState()
     //dtor
 }
 
-/** @brief addObject
-  *
-  * @todo: document this function
-  */
 void GameState::addEntity( Entity * entity )
 {
     std::cout << "Added object to gamestate!" << std::endl;
     ps_entities.push_back( entity );
 }
 
-/** @brief update
-  *
-  * @todo: document this function
-  */
 void GameState::update(float dt)
 {
     for ( std::vector<Entity*>::iterator it = m_entities.begin(); it != m_entities.end();)
@@ -59,21 +49,7 @@ void GameState::update(float dt)
         else
             ++it;
     }
-/*
-    for(it2 = uc.begin(); it2 != uc.end();)
-    {
-       ...
-       if(...)
-       {
-          it2 = uc.erase(it2);
-       }
-       else
-       {
-          ++it2;
-       }
-       ...
-    }
-*/
+
     while ( ps_entities.size() )
     {
         m_entities.push_back ( ps_entities.back() );
@@ -81,24 +57,11 @@ void GameState::update(float dt)
     }
 }
 
-/** @brief input
-  *
-  * @todo: document this function
-  */
 void GameState::input( const sf::Event & event )
 {
     SyncManager::input(event);
-/*
-    for ( std::vector<Entity*>::iterator it = m_entities.begin(); it != m_entities.end(); ++it )
-    {
-        (*it)->input(event);
-    }*/
 }
 
-/** @brief draw
-  *
-  * @todo: document this function
-  */
 void GameState::draw()
 {
     if ( SyncManager::myPlayerID != -1 )

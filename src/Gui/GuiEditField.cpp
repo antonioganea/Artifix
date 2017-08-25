@@ -22,7 +22,6 @@ GuiEditField::GuiEditField( std::string defaultString, int x, int y, int w, int 
 
     strcpy(stringBuffer,defaultString.c_str());
 
-    //shape.setScale(4.f,4.f);
     highlight(false);
 }
 
@@ -54,11 +53,9 @@ void GuiEditField::checkType( sf::Event::KeyEvent keyEvent ){
 void GuiEditField::highlight( bool hightlightOn ){
     if ( hightlightOn ){
         shape.setFillColor(sf::Color::Green);
-        //shape.setTextureRect(sf::IntRect(sf::Vector2i(halfWidth,0),sf::Vector2i(halfWidth,height)));
     }
     else{
         shape.setFillColor(sf::Color::White);
-        //shape.setTextureRect(sf::IntRect(sf::Vector2i(0,0),sf::Vector2i(halfWidth,height)));
     }
 }
 
@@ -74,15 +71,13 @@ bool GuiEditField::checkClick(sf::Event::MouseButtonEvent buttonEvent){
     highlight(false);
     if ( shape.getGlobalBounds().contains(buttonEvent.x,buttonEvent.y) ){
         highlight(true);
+        return true;
     }
+    return false;
 }
 
 bool GuiEditField::checkHover(sf::Event::MouseMoveEvent moveEvent){
-/*
-    highlight(false);
-    if ( shape.getGlobalBounds().contains(moveEvent.x,moveEvent.y) )
-        highlight(true);
-*/
+    return false;
 }
 
 void GuiEditField::draw(){

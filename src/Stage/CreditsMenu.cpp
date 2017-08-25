@@ -13,12 +13,6 @@ CreditsMenu::CreditsMenu()
     std::cout << "Credits Menu created!\n";
 
     sf::Texture * arenaTexture = GameRegistry::getResource("arena.png",ResourceType::Texture).texture;
-    /*
-    arena.setSize((sf::Vector2f)arenaTexture->getSize());
-    arena.setTexture(arenaTexture);
-    arena.setOrigin((sf::Vector2f)arenaTexture->getSize()/2.f);
-    arena.setScale(16.f,16.f);
-    */
     arena.setSize( sf::Vector2f(WINDOW_WIDTH,WINDOW_HEIGHT) );
     arena.setTexture(arenaTexture);
 
@@ -38,10 +32,6 @@ void CreditsMenu::addEntity( Entity * entity ){
 void CreditsMenu::update(float dt){
 }
 
-/** @brief input
-  *
-  * @todo: document this function
-  */
 void CreditsMenu::input( const sf::Event & event ){
     for ( std::vector<GuiButton*>::iterator it = m_buttons.begin(); it != m_buttons.end(); it++ ){
         switch( event.type ){
@@ -50,6 +40,8 @@ void CreditsMenu::input( const sf::Event & event ){
                 break;
             case sf::Event::MouseButtonReleased:
                 (*it)->checkClick(event.mouseButton);
+                break;
+            default:
                 break;
         }
     }

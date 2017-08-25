@@ -18,7 +18,7 @@
 
 const float Emeraldo::acceleration = 0.3f;
 const float Emeraldo::friction = 0.1f;
-const int Emeraldo::lookup[9] = {5,4,3,6,-1,2,7,0,1};//proud of this
+const int Emeraldo::lookup[9] = {5,4,3,6,-1,2,7,0,1};
 const int Emeraldo::abilityCooldown = 60;
 
 Emeraldo::Emeraldo(){
@@ -81,13 +81,6 @@ void Emeraldo::update(float dt){
         sprite.setPosition(dispersionParticles[0].position);
         velocity *= 0.0f;
     }
-
-/*
-    std::cout << dispersionParticleNo << "    ";
-    for ( int i = 0; i < 8; i++ )
-        std::cout << dispersionParticles[i].isDead() << " ";
-    std::cout << std::endl;
-*/
 
     Mechanics::applyAcceleration(velocity,d-a,s-w,acceleration);
     Mechanics::applyMaxSpeed(velocity,5.0f);
@@ -217,7 +210,6 @@ void Emeraldo::attack(){
     sf::Vector2f _velocity;
     memcpy(&_velocity.x,SyncManager::options,4);
     memcpy(&_velocity.y,SyncManager::options+4,4);
-    //std::cout << "SHOOT :" << _velocity.x << " " << _velocity.y << std::endl;
     for ( int i = 0; i < 16; i++ ){
         if ( shootParticles[i].isDead() ){
             shootParticles[i].reset(sprite.getPosition(),_velocity*15.f,30);

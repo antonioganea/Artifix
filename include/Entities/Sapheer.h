@@ -9,7 +9,6 @@
 class Sapheer : public Crystal{
     public:
         Sapheer();
-        //virtual ~Sapheer();
         void draw();
         void update( float dt );
 
@@ -43,7 +42,6 @@ class Sapheer : public Crystal{
     private:
         const static float acceleration;
         const static float friction;
-        //const static int abilityCooldown;
 
         sf::Sprite sprite;
 
