@@ -22,6 +22,7 @@
 					<Add directory="include" />
 					<Add directory="include/Networking" />
 					<Add directory="include/Gui" />
+					<Add directory="include/Debug" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -40,6 +41,7 @@
 					<Add directory="include" />
 					<Add directory="include/Networking" />
 					<Add directory="include/Gui" />
+					<Add directory="include/Debug" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -50,6 +52,7 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="include/Config.h" />
+		<Unit filename="include/Debug/DebugLog.h" />
 		<Unit filename="include/Display/Display.h" />
 		<Unit filename="include/Entities/Crystal.h" />
 		<Unit filename="include/Entities/Emeraldo.h" />
@@ -74,6 +77,7 @@
 		<Unit filename="include/Stage/StageManager.h" />
 		<Unit filename="include/Utility/Geometry.h" />
 		<Unit filename="include/Utility/Mechanics.h" />
+		<Unit filename="src/Debug/DebugLog.cpp" />
 		<Unit filename="src/Display/Display.cpp" />
 		<Unit filename="src/Entities/Emeraldo.cpp" />
 		<Unit filename="src/Entities/EmeraldoShard.cpp" />

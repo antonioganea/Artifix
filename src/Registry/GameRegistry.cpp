@@ -1,5 +1,7 @@
 #include "GameRegistry.h"
 
+#include "DebugLog.h"
+
 #include <string>
 #include <iostream>
 
@@ -9,7 +11,7 @@ std::stack<ResourceCommand> GameRegistry::m_commands;
 void GameRegistry::init(){
     GameRegistry::queueResource("emeraldo.png",ResourceType::Texture);
     GameRegistry::queueResource("shard_emeraldo.png",ResourceType::Texture);
-    GameRegistry::queueResource("shard.png",ResourceType::Texture);
+    GameRegistry::queueResource("emeraldo_small.png",ResourceType::Texture);
     GameRegistry::queueResource("rubie.png",ResourceType::Texture);
     GameRegistry::queueResource("shard_rubie.png",ResourceType::Texture);
     GameRegistry::queueResource("laser.png",ResourceType::Texture);
@@ -39,7 +41,7 @@ bool GameRegistry::queueResource( const std::string& filePath, const ResourceTyp
     command.filePath = filePath;
     command.type = type;
     m_commands.push( command );
-    std::cout << "Queued resource : "<< filePath << std::endl;
+    DebugLog::print( LogLevel::Info, "Queued resource : %s", filePath.c_str() );
     return true;
 }
 
@@ -56,13 +58,13 @@ std::string composeFullPath( const std::string& filePath, const ResourceType& ty
         fullPath = "data/sounds/" + filePath;
         break;
     }
-    std::cout << "Composed fullPath : "<< fullPath << std::endl;
+    DebugLog::print( LogLevel::Trace, "Composed fullPath : %s", fullPath.c_str() );
     return fullPath;
 }
 
 ResourcePtr GameRegistry::getResource( const std::string& filePath, const ResourceType& type ){
     std::string fullPath = composeFullPath( filePath, type );
-    std::cout << "Returning resource : "<< fullPath << std::endl;
+    DebugLog::print( LogLevel::Trace, "Returning resource : %s", filePath.c_str() );
     return m_resources.find(fullPath)->second;//use full path
 }
 
@@ -80,22 +82,21 @@ bool GameRegistry::loadResource()
                 sf::Texture * texture = new sf::Texture;
                 texture->loadFromFile(fullPath);
                 res.texture = texture;
-                std::cout << "Loading texture : "<< fullPath << std::endl;
-                std::cout << "BOOP : X : " << texture->getSize().x << "  Y : " << texture->getSize().y << std::endl;
+                DebugLog::print( LogLevel::Trace, "Loading texture : %s, size %dx%d", fullPath.c_str(), texture->getSize().x, texture->getSize().y );
                 break;
             }
             case ResourceType::Font :{
                 sf::Font * font = new sf::Font;
                 font->loadFromFile(fullPath);
                 res.font = font;
-                std::cout << "Loading font : "<< fullPath << std::endl;
+                DebugLog::print( LogLevel::Trace, "Loading font : %s", fullPath.c_str() );
                 break;
             }
             case ResourceType::SoundBuffer :{
                 sf::SoundBuffer * soundBuffer = new sf::SoundBuffer;
                 soundBuffer->loadFromFile(fullPath);
                 res.soundBuffer = soundBuffer;
-                std::cout << "Loading sound : "<< fullPath << std::endl;
+                DebugLog::print( LogLevel::Trace, "Loading sound : %s", fullPath.c_str() );
                 break;
             }
         };

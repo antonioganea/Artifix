@@ -108,12 +108,12 @@ void SyncManager::receivePackets(){
     status = SyncManager::socket.receive(SyncManager::packageBuffer,128,received);
     if ( status == sf::Socket::Status::Done ){
         SyncManager::parseBuffer( received );
-        /*
+
         std::cout << "RECEIVED A PACKET " << received << " bytes" << std::endl;
         for ( int i = 0; i < received; i++ ){
             std::cout << (int)(SyncManager::packageBuffer[i]) << " ";
         }std::cout << std::endl;
-        */
+
     }
     SyncManager::socket.setBlocking(true); // TODO : GET RID OF THIS
 }
@@ -122,13 +122,14 @@ void SyncManager::parseBuffer( std::size_t received ){
     char * cursor = SyncManager::packageBuffer;
     int player;
 
-    //std::cout << "Received " << received << " bytes." << std::endl;
+    std::cout << "Received " << received << " bytes." << std::endl;
 
     while ( cursor - SyncManager::packageBuffer < received )
     {
         player = *cursor;
         cursor++;
         switch( *cursor ){ // Packet Code
+
             case 1:{ // Crystal Type
                 std::cout << "Type 1 - crystal type" << std::endl;
                 cursor++;
@@ -251,7 +252,6 @@ void SyncManager::parseBuffer( std::size_t received ){
     }
 }
 //**************************************************************************************
-
 
 void SyncManager::input( sf::Event event ){
     if ( SyncManager::myPlayerID != -1 ){

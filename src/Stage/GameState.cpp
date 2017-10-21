@@ -18,7 +18,7 @@ GameState::GameState()
     arena.setOrigin((sf::Vector2f)arenaTexture->getSize()/2.f);
     arena.setScale(16.f,16.f);
 
-    circle.setRadius(500);
+    circle.setRadius(300);
     circle.setFillColor(sf::Color::Transparent);
     circle.setOutlineColor(sf::Color::Black);
     circle.setOutlineThickness(5);

@@ -4,6 +4,7 @@
 #include "Display.h"
 
 #include "Mechanics.h"
+#include <math.h>
 
 Particle::Particle(){
     lifetime = 0;

@@ -15,6 +15,8 @@
 #include <time.h>
 #include <stdlib.h>
 
+#include "DebugLog.h"
+
 int main(){
     srand(time(NULL));
 
@@ -27,6 +29,16 @@ int main(){
     sf::View view;
 
     view.setSize( WINDOW_WIDTH, WINDOW_HEIGHT );
+/*
+    ///Debugging snippet///
+    SyncManager::connectToServer("127.0.0.1");
+    SyncManager::sendCrystalType(2); // Emeraldo
+    StageManager::pushStage(StageManager::gameState);
+    ///End of debugging snippet///
+*/
+    sf::CircleShape circle;
+    circle.setRadius(50.f);
+    circle.setFillColor(sf::Color::Green);
 
     while (Display::window->isOpen()){
 
@@ -45,6 +57,7 @@ int main(){
         }
 
         SyncManager::receivePackets();
+
         StageManager::update(10.f);
 
         Display::window->clear();

@@ -9,7 +9,7 @@
 #include <stdlib.h>
 
 EmeraldoShard::EmeraldoShard(){
-    sf::Texture * texture = GameRegistry::getResource("shard.png",ResourceType::Texture).texture;
+    sf::Texture * texture = GameRegistry::getResource("emeraldo_small.png",ResourceType::Texture).texture;
     shape = new sf::RectangleShape( (sf::Vector2f)texture->getSize() );
     shape->setTexture(texture,false);
     shape->setScale(4.f,4.f);

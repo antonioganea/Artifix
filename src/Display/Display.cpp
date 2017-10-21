@@ -10,6 +10,7 @@ sf::View Display::view;
 void Display::init()
 {
     Display::window = new sf::RenderWindow( sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), APP_NAME, sf::Style::Fullscreen );
+    Display::window->setVerticalSyncEnabled(true);
     Display::window->setFramerateLimit(60);
     Display::window->setKeyRepeatEnabled(false);
 

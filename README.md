@@ -25,4 +25,4 @@ Video YouTube - https://youtu.be/JdwRD6uL9KM
 ## Autori
 
 * **Antonio Ganea** - *Programare* - [GitHub](https://github.com/antonioganea)
-* **Matei Cibotaru** - *Grafica si design* - [GitHub](https://github.com/cibotarumatei)
+* **Matei Cibotaru** - *Grafica* - [GitHub](https://github.com/cibotarumatei)
